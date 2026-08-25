@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Kitchen Dekor Werks</title>
+<meta name="description" content="A look at recent kitchens, cabinetry, built-ins, and millwork details from Kitchen Dekor Werks.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2317140F'/%3E%3Ctext x='50' y='68' font-size='60' fill='%23F6F6F3' text-anchor='middle' font-family='sans-serif'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html"><span data-text="Home">Home</span></a>
+    <a href="services.html"><span data-text="Services">Services</span></a>
+    <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
+    <a href="about.html"><span data-text="About">About</span></a>
+  </nav>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<div class="site-menu" id="site-menu" aria-hidden="true">
+  <div class="site-menu-inner">
+    <nav class="site-menu-links" aria-label="Full menu">
+      <a href="index.html"><span class="mono-num">01</span>Home</a>
+      <a href="services.html"><span class="mono-num">02</span>Services</a>
+      <a href="gallery.html"><span class="mono-num">03</span>Gallery</a>
+      <a href="about.html"><span class="mono-num">04</span>About</a>
+      <a href="contact.html"><span class="mono-num">05</span>Contact</a>
+    </nav>
+    <div class="site-menu-contact">
+      <div class="site-menu-block">
+        <span class="eyebrow">Phone</span>
+        <a href="tel:+16477727289">647-772-7289</a>
+      </div>
+      <div class="site-menu-block">
+        <span class="eyebrow">Email</span>
+        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
+      </div>
+      <div class="site-menu-block">
+        <span class="eyebrow">Shop &amp; Showroom</span>
+        <p>Ontario, Canada</p>
+      </div>
+      <div class="site-menu-block">
+        <span class="eyebrow">Follow</span>
+        <div class="site-menu-social">
+          <a href="#">Instagram</a>
+          <a href="#">Houzz</a>
+          <a href="#">Pinterest</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-menu-footer">
+    <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
+    <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
+  </div>
+</div>
+
+<main>
+
+  <section class="hero" style="min-height:50svh;">
+    <div class="container">
+      <span class="eyebrow">Gallery</span>
+      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(2.4rem,5.6vw,4.6rem);">Recent work.</h1>
+      <p class="lede muted" style="margin-top:1.4rem;">Filter by category, or click any piece for a closer look. Swap these placeholders for real project photography.</p>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY GRID ================= -->
+  <!-- EDIT: replace each .ph placeholder with a real <img>, update data-title / data-category -->
+  <section style="padding-top:1rem;">
+    <div class="container">
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="kitchens">Kitchens</button>
+        <button class="filter-btn" data-filter="cabinetry">Cabinetry</button>
+        <button class="filter-btn" data-filter="built-ins">Built-Ins</button>
+        <button class="filter-btn" data-filter="details">Details</button>
+      </div>
+
+      <div class="gallery-grid stagger">
+
+        <figure class="gallery-item reveal" data-category="kitchens" data-title="Waterfall Island Kitchen">
+          <img src="images/real/kitchen-01.jpg" alt="White kitchen with waterfall marble island">
+          <figcaption><span>Waterfall Island Kitchen</span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="cabinetry" data-title="Waterfall Marble Island">
+          <img src="images/real/kitchen-03.jpg" alt="Close view of waterfall marble kitchen island">
+          <figcaption><span>Waterfall Marble Island</span><span class="muted">Cabinetry</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="built-ins" data-title="Walnut Media Wall">
+          <img src="images/real/builtin-media-01.jpg" alt="Walnut wood slat media wall with floating shelves">
+          <figcaption><span>Walnut Media Wall</span><span class="muted">Built-Ins</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="details" data-title="Walnut Wet Bar">
+          <img src="images/real/builtin-wetbar-01.jpg" alt="Custom walnut wet bar with glass display cabinetry">
+          <figcaption><span>Walnut Wet Bar</span><span class="muted">Details</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="kitchens" data-title="Family Kitchen &amp; Dining">
+          <img src="images/real/kitchen-05.jpg" alt="Open concept white and black kitchen with dining nook">
+          <figcaption><span>Family Kitchen &amp; Dining</span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="cabinetry" data-title="Espresso Island Detail">
+          <img src="images/real/kitchen-12.jpg" alt="Espresso tone cabinetry island with brass hardware">
+          <figcaption><span>Espresso Island Detail</span><span class="muted">Cabinetry</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="built-ins" data-title="Custom Pantry Shelving">
+          <img src="images/real/builtin-closet-01.jpg" alt="Custom pantry and closet shelving">
+          <figcaption><span>Custom Pantry Shelving</span><span class="muted">Built-Ins</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="details" data-title="Gloss Grey &amp; Brass Detail">
+          <img src="images/real/kitchen-06.jpg" alt="Detail of glossy grey cabinetry with brass hardware">
+          <figcaption><span>Gloss Grey &amp; Brass Detail</span><span class="muted">Details</span></figcaption>
+        </figure>
+
+        <figure class="gallery-item reveal" data-category="kitchens" data-title="Two-Tone Gloss Kitchen">
+          <img src="images/real/kitchen-08.jpg" alt="Two-tone gloss kitchen with waterfall island">
+          <figcaption><span>Two-Tone Gloss Kitchen</span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container reveal">
+      <span class="eyebrow" style="justify-content:center;">Like What You See</span>
+      <h2 style="margin:1.2rem auto 0;">Let's build something like it.</h2>
+      <div style="margin-top:2rem;">
+        <a href="contact.html" class="btn btn-primary">Get in Touch <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <h4>Kitchen Dekor Werks</h4>
+        <p class="small" style="opacity:.7;">Custom Kitchens, Cabinetry &amp; Architectural Millwork.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+16477727289">647-772-7289</a>
+        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
+        <p>kdwgroup.ca</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Houzz</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
+      <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" src="" alt="">
+    <div class="lightbox-caption">
+      <span data-lb-title></span>
+      <span data-lb-meta class="muted"></span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

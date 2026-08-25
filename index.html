@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Dekor Werks — Custom Kitchens &amp; Architectural Millwork</title>
+<meta name="description" content="Kitchen Dekor Werks designs and builds bespoke kitchen cabinetry, millwork, and built-ins across Ontario. Precision craftsmanship, from concept to install.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2317140F'/%3E%3Ctext x='50' y='68' font-size='60' fill='%23F6F6F3' text-anchor='middle' font-family='sans-serif'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= LAUNCH INTRO (home page only) ================= -->
+<!-- Pure-CSS timed reveal: letters stagger in, hold, then the overlay fades to
+     reveal the page beneath. Works even with JS disabled; script.js only adds
+     the optional "Skip" button and pauses page scroll while it plays. -->
+<div class="intro" id="site-intro" aria-hidden="true">
+  <div class="intro-mark">
+    <span class="intro-letter" style="--i:0">k</span>
+    <span class="intro-letter" style="--i:1">d</span>
+    <span class="intro-letter" style="--i:2">w</span>
+    <span class="intro-letter" style="--i:3">g</span>
+    <span class="intro-letter" style="--i:4">r</span>
+    <span class="intro-letter" style="--i:5">o</span>
+    <span class="intro-letter" style="--i:6">u</span>
+    <span class="intro-letter" style="--i:7">p</span>
+    <span class="intro-letter" style="--i:8">.</span>
+    <span class="intro-letter" style="--i:9">c</span>
+    <span class="intro-letter" style="--i:10">a</span>
+  </div>
+  <button class="intro-skip" id="intro-skip" type="button">Skip Intro</button>
+</div>
+
+<!-- ================= NAV ================= -->
+<header class="site-header">
+  <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="index.html"><span data-text="Home">Home</span></a>
+    <a href="services.html"><span data-text="Services">Services</span></a>
+    <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
+    <a href="about.html"><span data-text="About">About</span></a>
+  </nav>
+  <a href="contact.html" class="nav-cta">Get in Touch</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<div class="site-menu" id="site-menu" aria-hidden="true">
+  <div class="site-menu-inner">
+    <nav class="site-menu-links" aria-label="Full menu">
+      <a href="index.html"><span class="mono-num">01</span>Home</a>
+      <a href="services.html"><span class="mono-num">02</span>Services</a>
+      <a href="gallery.html"><span class="mono-num">03</span>Gallery</a>
+      <a href="about.html"><span class="mono-num">04</span>About</a>
+      <a href="contact.html"><span class="mono-num">05</span>Contact</a>
+    </nav>
+    <div class="site-menu-contact">
+      <div class="site-menu-block">
+        <span class="eyebrow">Phone</span>
+        <a href="tel:+16477727289">647-772-7289</a>
+      </div>
+      <div class="site-menu-block">
+        <span class="eyebrow">Email</span>
+        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
+      </div>
+      <div class="site-menu-block">
+        <span class="eyebrow">Shop &amp; Showroom</span>
+        <p>Ontario, Canada</p>
+      </div>
+      <div class="site-menu-block">
+        <span class="eyebrow">Follow</span>
+        <div class="site-menu-social">
+          <a href="#">Instagram</a>
+          <a href="#">Houzz</a>
+          <a href="#">Pinterest</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="site-menu-footer">
+    <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
+    <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <!-- EDIT: hero headline / subhead / CTAs -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <svg class="grain-accent" viewBox="0 0 190 240" aria-hidden="true">
+          <path d="M22 240 Q60 120 22 0"/>
+          <path d="M48 240 Q84 120 48 0"/>
+          <path d="M74 240 Q106 120 74 0"/>
+          <path d="M100 240 Q128 120 100 0"/>
+          <path d="M126 240 Q150 120 126 0"/>
+          <path d="M152 240 Q172 120 152 0"/>
+        </svg>
+        <span class="eyebrow">Custom Kitchens · Cabinetry · Architectural Millwork</span>
+        <h1 class="h1">Kitchens built<br>to fit precisely.</h1>
+        <p class="lede muted">Kitchen Dekor Werks designs and fabricates bespoke cabinetry, kitchen millwork, and built-ins — engineered with the same precision as fine furniture, installed by the people who built it.</p>
+        <div class="hero-actions">
+          <a href="gallery.html" class="btn btn-primary">View Our Work <span class="btn-arrow">→</span></a>
+          <a href="contact.html" class="btn btn-ghost">Start a Project</a>
+        </div>
+      </div>
+      <!-- EDIT: update data-name / data-loc with your real project names & locations -->
+      <div class="showcase" id="hero-showcase">
+        <div class="showcase-stage">
+          <figure class="showcase-slide is-active" data-name="Matte Black Waterfall Kitchen" data-loc="Ontario">
+            <img src="images/real/kitchen-04.jpg" alt="Matte black gloss kitchen with waterfall island">
+          </figure>
+          <figure class="showcase-slide" data-name="Bright White Island Kitchen" data-loc="Ontario">
+            <img src="images/real/kitchen-02.jpg" alt="Bright white kitchen with large island and pendant lighting">
+          </figure>
+          <figure class="showcase-slide" data-name="Gloss Grey &amp; Brass Kitchen" data-loc="Ontario">
+            <img src="images/real/kitchen-06.jpg" alt="Glossy grey cabinetry kitchen with brass hardware">
+          </figure>
+          <figure class="showcase-slide" data-name="Espresso &amp; Marble Kitchen" data-loc="Ontario">
+            <img src="images/real/kitchen-09.jpg" alt="Dark espresso cabinetry kitchen with marble waterfall hood">
+          </figure>
+          <figure class="showcase-slide" data-name="Walnut Wet Bar" data-loc="Ontario">
+            <img src="images/real/builtin-wetbar-01.jpg" alt="Custom walnut wet bar with glass cabinetry">
+          </figure>
+        </div>
+
+        <div class="showcase-caption">
+          <span class="showcase-index mono-num">01</span>
+          <div class="showcase-text">
+            <span class="showcase-name">Matte Black Waterfall Kitchen</span>
+            <span class="showcase-loc muted small">Ontario</span>
+          </div>
+        </div>
+
+        <div class="showcase-controls">
+          <button class="showcase-arrow showcase-prev" aria-label="Previous project" type="button">←</button>
+          <div class="showcase-dashes">
+            <button class="dash is-active" data-slide="0" aria-label="Show project 1" type="button"></button>
+            <button class="dash" data-slide="1" aria-label="Show project 2" type="button"></button>
+            <button class="dash" data-slide="2" aria-label="Show project 3" type="button"></button>
+            <button class="dash" data-slide="3" aria-label="Show project 4" type="button"></button>
+            <button class="dash" data-slide="4" aria-label="Show project 5" type="button"></button>
+          </div>
+          <button class="showcase-arrow showcase-next" aria-label="Next project" type="button">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Custom Cabinetry</span><span>Kitchen Millwork</span><span>Built-Ins</span><span>Fine Joinery</span>
+      <span>Custom Cabinetry</span><span>Kitchen Millwork</span><span>Built-Ins</span><span>Fine Joinery</span>
+    </div>
+  </div>
+<!-- ================= STATEMENT ================= -->
+  <!-- EDIT: studio philosophy paragraph -->
+  <section>
+    <div class="container statement reveal">
+      <p class="eyebrow">Our Approach</p>
+      <p class="h2">Every kitchen starts with how a family actually lives in it — then we draw, cut, and finish around that, down to the last reveal line and hinge.</p>
+    </div>
+  </section>
+<!-- ================= SERVICES PREVIEW ================= -->
+  <!-- EDIT: service names / descriptions — full detail lives on services.html -->
+  <section>
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <span class="eyebrow">What We Build</span>
+        <h2 style="margin-top:1rem;">Four ways we work with wood.</h2>
+      </div>
+      <div class="grid-4 stagger">
+        <div class="card reveal">
+          <span class="mono-num">01</span>
+          <h3>Custom Cabinetry</h3>
+          <p>Full kitchen design and fabrication, tailored to your space and how you cook.</p>
+        </div>
+        <div class="card reveal">
+          <span class="mono-num">02</span>
+          <h3>Architectural Millwork</h3>
+          <p>Mouldings, wainscoting, and trim, cut and finished on site to a tight tolerance.</p>
+        </div>
+        <div class="card reveal">
+          <span class="mono-num">03</span>
+          <h3>Built-Ins &amp; Shelving</h3>
+          <p>Window seats, media walls, pantries, and closets built into the room itself.</p>
+        </div>
+        <div class="card reveal">
+          <span class="mono-num">04</span>
+          <h3>Renovation &amp; Install</h3>
+          <p>Full-service kitchen renovation, from first sketch to final walkthrough.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ================= WORK PREVIEW ================= -->
+  <section>
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem; display:flex; justify-content:space-between; align-items:end; gap:1rem; flex-wrap:wrap;">
+        <div>
+          <span class="eyebrow">Recent Work</span>
+          <h2 style="margin-top:1rem;">A few kitchens we've built.</h2>
+        </div>
+        <a href="gallery.html" class="btn btn-ghost">Full Gallery <span class="btn-arrow">→</span></a>
+      </div>
+      <div class="grid-3 stagger">
+        <div class="reveal"><div class="ph" style="height:320px;" data-label="Project — placeholder 01"></div></div>
+        <div class="reveal"><div class="ph" style="height:320px;" data-label="Project — placeholder 02"></div></div>
+        <div class="reveal"><div class="ph" style="height:320px;" data-label="Project — placeholder 03"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section>
+    <div class="container">
+      <div class="reveal" style="margin-bottom:1rem;">
+        <span class="eyebrow">How It Works</span>
+        <h2 style="margin-top:1rem;">From first call to final install.</h2>
+      </div>
+      <div class="process-list reveal">
+        <div class="process-row">
+          <span class="mono-num">01</span>
+          <h3>Consultation</h3>
+          <p class="muted">We visit your space, talk through how you live in it, and scope the project together.</p>
+        </div>
+        <div class="process-row">
+          <span class="mono-num">02</span>
+          <h3>Design &amp; Drawings</h3>
+          <p class="muted">Detailed shop drawings and material selections, refined until every dimension is right.</p>
+        </div>
+        <div class="process-row">
+          <span class="mono-num">03</span>
+          <h3>Fabrication</h3>
+          <p class="muted">Built in our shop to exact tolerances, with the joinery and finish your project calls for.</p>
+        </div>
+        <div class="process-row">
+          <span class="mono-num">04</span>
+          <h3>Installation</h3>
+          <p class="muted">Our own installers fit and finish on site — the team that built it is the team that hangs it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta-band">
+    <div class="container reveal">
+      <span class="eyebrow" style="justify-content:center;">Start a Project</span>
+      <h2 style="margin:1.2rem auto 0;">Have a kitchen in mind? Let's talk it through.</h2>
+      <div style="margin-top:2rem;">
+        <a href="contact.html" class="btn btn-primary">Get in Touch <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <h4>Kitchen Dekor Werks</h4>
+        <p class="small" style="opacity:.7;">Custom Kitchens, Cabinetry &amp; Architectural Millwork.</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <!-- EDIT: real phone / email -->
+        <a href="tel:+16477727289">647-772-7289</a>
+        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
+        <p>kdwgroup.ca</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Houzz</a>
+        <a href="#">Pinterest</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
+      <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

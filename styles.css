@@ -308,8 +308,8 @@ h3, .h3{
   color: transparent;
   -webkit-text-fill-color: transparent;
   background-repeat: no-repeat;
-  background-size: 46vw 46vw;
-  background-position: var(--mx, 50%) var(--my, 50%);
+  background-size: 460px 300px;
+  background-position: 0 0;
   -webkit-background-clip: text;
   background-clip: text;
   pointer-events: none;
@@ -330,7 +330,7 @@ h3, .h3{
 }
 @media (max-width: 720px){
   .agency-hero{ min-height: 62vh; }
-  .agency-type-mask{ background-size: 70vw 70vw; }
+  .agency-type-mask{ background-size: 260px 180px; }
 }
 
 /* ---------- launch intro (home page only) ---------- */

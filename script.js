@@ -278,13 +278,18 @@
       'images/real/kitchen-09.jpg'
     ];
     var currentImg = '';
+    var WIN_W = 460, WIN_H = 300; // must match .agency-type-mask background-size in styles.css
 
     var setPosition = function (clientX, clientY) {
       var r = agencyWrap.getBoundingClientRect();
-      var xPct = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
-      var yPct = Math.max(0, Math.min(100, ((clientY - r.top) / r.height) * 100));
-      agencyWrap.style.setProperty('--mx', xPct + '%');
-      agencyWrap.style.setProperty('--my', yPct + '%');
+      var localX = clientX - r.left;
+      var localY = clientY - r.top;
+      var xPct = Math.max(0, Math.min(100, (localX / r.width) * 100));
+
+      // center a fixed-size "window" of the photo exactly on the cursor
+      var bgX = Math.round(localX - WIN_W / 2);
+      var bgY = Math.round(localY - WIN_H / 2);
+      agencyMask.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
 
       var idx = Math.min(agencyImages.length - 1, Math.floor((xPct / 100) * agencyImages.length));
       var nextImg = agencyImages[idx];

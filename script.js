@@ -273,9 +273,9 @@
     // EDIT: put your own photo paths here — the one shown depends on which
     // horizontal third of the heading the cursor is currently over.
     var agencyImages = [
-      'images/real/kitchen-01.jpg',
-      'images/real/builtin-wetbar-01.jpg',
-      'images/real/kitchen-09.jpg'
+      'kitchen-01.jpg',
+      'builtin-wetbar-01.jpg',
+      'kitchen-09.jpg'
     ];
     var currentImg = '';
     var WIN_W = 460, WIN_H = 300; // must match .agency-type-mask background-size in styles.css

@@ -266,4 +266,45 @@
     startAutoplay();
   }
 
+  /* ---- giant type with cursor-revealed photo (about page) ---- */
+  var agencyWrap = document.getElementById('agency-type-wrap');
+  var agencyMask = document.getElementById('agency-type-mask');
+  if (agencyWrap && agencyMask) {
+    // EDIT: put your own photo paths here — the one shown depends on which
+    // horizontal third of the heading the cursor is currently over.
+    var agencyImages = [
+      'images/real/kitchen-01.jpg',
+      'images/real/builtin-wetbar-01.jpg',
+      'images/real/kitchen-09.jpg'
+    ];
+    var currentImg = '';
+
+    var setPosition = function (clientX, clientY) {
+      var r = agencyWrap.getBoundingClientRect();
+      var xPct = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
+      var yPct = Math.max(0, Math.min(100, ((clientY - r.top) / r.height) * 100));
+      agencyWrap.style.setProperty('--mx', xPct + '%');
+      agencyWrap.style.setProperty('--my', yPct + '%');
+
+      var idx = Math.min(agencyImages.length - 1, Math.floor((xPct / 100) * agencyImages.length));
+      var nextImg = agencyImages[idx];
+      if (nextImg !== currentImg) {
+        agencyMask.style.backgroundImage = "url('" + nextImg + "')";
+        currentImg = nextImg;
+      }
+    };
+
+    agencyWrap.addEventListener('mousemove', function (e) {
+      setPosition(e.clientX, e.clientY);
+    });
+    agencyWrap.addEventListener('touchstart', function () {
+      agencyWrap.classList.add('is-touched');
+    }, { passive: true });
+    agencyWrap.addEventListener('touchmove', function (e) {
+      if (e.touches && e.touches[0]) {
+        setPosition(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+  }
+
 })();

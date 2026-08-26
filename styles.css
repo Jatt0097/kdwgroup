@@ -282,6 +282,57 @@ h3, .h3{
   .nav-links, .nav-cta{ display: none; }
 }
 
+/* ---------- giant type with cursor-revealed photo (about page) ---------- */
+.agency-hero{
+  position: relative;
+  min-height: 78vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem var(--gutter) 3rem;
+  overflow: hidden;
+}
+.agency-type-wrap{
+  position: relative;
+  cursor: default;
+}
+.agency-giant-type{
+  font-family: var(--f-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: .88;
+  font-size: clamp(3.2rem, 13vw, 9.5rem);
+  margin: 0;
+}
+.agency-type-base{ color: var(--ink); position: relative; z-index: 1; }
+.agency-type-mask{
+  position: absolute; inset: 0; z-index: 2;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 46vw 46vw;
+  background-position: var(--mx, 50%) var(--my, 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s var(--ease);
+}
+.agency-type-wrap:hover .agency-type-mask,
+.agency-type-wrap.is-touched .agency-type-mask{ opacity: 1; }
+
+.agency-scroll-cue{
+  position: relative; z-index: 2;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  color: var(--amber);
+  font-family: var(--f-mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .8rem;
+}
+@media (max-width: 720px){
+  .agency-hero{ min-height: 62vh; }
+  .agency-type-mask{ background-size: 70vw 70vw; }
+}
+
 /* ---------- launch intro (home page only) ---------- */
 .intro{
   position: fixed; inset: 0;

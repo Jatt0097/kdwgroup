@@ -282,55 +282,47 @@ h3, .h3{
   .nav-links, .nav-cta{ display: none; }
 }
 
-/* ---------- giant type with cursor-revealed photo (about page) ---------- */
-.agency-hero{
+/* ---------- stacked photo fade behind services hero ---------- */
+.services-hero{
   position: relative;
-  min-height: 78vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 4rem var(--gutter) 3rem;
   overflow: hidden;
 }
-.agency-type-wrap{
-  position: relative;
-  cursor: default;
-}
-.agency-giant-type{
-  font-family: var(--f-display);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: .88;
-  font-size: clamp(3.2rem, 13vw, 9.5rem);
-  margin: 0;
-}
-.agency-type-base{ color: var(--ink); position: relative; z-index: 1; }
-.agency-type-mask{
-  position: absolute; inset: 0; z-index: 2;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  background-repeat: no-repeat;
-  background-size: 460px 300px;
-  background-position: 0 0;
-  -webkit-background-clip: text;
-  background-clip: text;
+.services-hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
+}
+.services-hero-bg img{
+  position: absolute;
+  width: 62%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 2px;
   opacity: 0;
-  transition: opacity .35s var(--ease);
+  filter: grayscale(.1);
+  box-shadow: 0 30px 70px rgba(0,0,0,.35);
+  transition: opacity .5s var(--ease);
 }
-.agency-type-wrap:hover .agency-type-mask,
-.agency-type-wrap.is-touched .agency-type-mask{ opacity: 1; }
+/* fixed positions, each offset ~10mm (37.8px) further from the top-left corner */
+.services-hero-bg img:nth-child(1){ top: 37.8px;  left: 37.8px;  }
+.services-hero-bg img:nth-child(2){ top: 75.6px;  left: 75.6px;  }
+.services-hero-bg img:nth-child(3){ top: 113.4px; left: 113.4px; }
+.services-hero-bg img:nth-child(4){ top: 151.2px; left: 151.2px; }
+.services-hero-bg img:nth-child(5){ top: 189px;   left: 189px;   }
+.services-hero-bg img.is-active{ opacity: 1; }
 
-.agency-scroll-cue{
-  position: relative; z-index: 2;
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  color: var(--amber);
-  font-family: var(--f-mono);
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-size: .8rem;
-}
+.services-hero > .container{ position: relative; z-index: 1; transition: mix-blend-mode 0s; }
+/* while a photo is showing behind it, the text blends against it instead of sitting flatly on top */
+.services-hero.has-active > .container{ mix-blend-mode: difference; }
+
 @media (max-width: 720px){
-  .agency-hero{ min-height: 62vh; }
-  .agency-type-mask{ background-size: 260px 180px; }
+  .services-hero-bg img{ width: 78%; height: 46%; }
+  .services-hero-bg img:nth-child(1){ top: 18px; left: 18px; }
+  .services-hero-bg img:nth-child(2){ top: 36px; left: 36px; }
+  .services-hero-bg img:nth-child(3){ top: 54px; left: 54px; }
+  .services-hero-bg img:nth-child(4){ top: 72px; left: 72px; }
+  .services-hero-bg img:nth-child(5){ top: 90px; left: 90px; }
 }
 
 /* ---------- launch intro (home page only) ---------- */

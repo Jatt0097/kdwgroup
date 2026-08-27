@@ -266,50 +266,35 @@
     startAutoplay();
   }
 
-  /* ---- giant type with cursor-revealed photo (about page) ---- */
-  var agencyWrap = document.getElementById('agency-type-wrap');
-  var agencyMask = document.getElementById('agency-type-mask');
-  if (agencyWrap && agencyMask) {
-    // EDIT: put your own photo paths here — the one shown depends on which
-    // horizontal third of the heading the cursor is currently over.
-    var agencyImages = [
-      'kitchen-01.jpg',
-      'builtin-wetbar-01.jpg',
-      'kitchen-09.jpg'
-    ];
-    var currentImg = '';
-    var WIN_W = 460, WIN_H = 300; // must match .agency-type-mask background-size in styles.css
+  /* ---- stacked photo fade behind services hero ---- */
+  var servicesBg = document.getElementById('services-hero-bg');
+  if (servicesBg) {
+    var heroSection = servicesBg.closest('.services-hero');
+    var bgImgs = Array.prototype.slice.call(servicesBg.querySelectorAll('img'));
+    var activeImg = null;
 
-    var setPosition = function (clientX, clientY) {
-      var r = agencyWrap.getBoundingClientRect();
-      var localX = clientX - r.left;
-      var localY = clientY - r.top;
-      var xPct = Math.max(0, Math.min(100, (localX / r.width) * 100));
-
-      // center a fixed-size "window" of the photo exactly on the cursor
-      var bgX = Math.round(localX - WIN_W / 2);
-      var bgY = Math.round(localY - WIN_H / 2);
-      agencyMask.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
-
-      var idx = Math.min(agencyImages.length - 1, Math.floor((xPct / 100) * agencyImages.length));
-      var nextImg = agencyImages[idx];
-      if (nextImg !== currentImg) {
-        agencyMask.style.backgroundImage = "url('" + nextImg + "')";
-        currentImg = nextImg;
-      }
+    var setActive = function (img) {
+      if (img === activeImg) return;
+      activeImg = img;
+      bgImgs.forEach(function (el) { el.classList.toggle('is-active', el === img); });
+      heroSection.classList.toggle('has-active', !!img);
     };
 
-    agencyWrap.addEventListener('mousemove', function (e) {
-      setPosition(e.clientX, e.clientY);
-    });
-    agencyWrap.addEventListener('touchstart', function () {
-      agencyWrap.classList.add('is-touched');
-    }, { passive: true });
-    agencyWrap.addEventListener('touchmove', function (e) {
-      if (e.touches && e.touches[0]) {
-        setPosition(e.touches[0].clientX, e.touches[0].clientY);
+    heroSection.addEventListener('mousemove', function (e) {
+      var hit = null;
+      // later images are drawn on top, so check in reverse so the topmost wins
+      for (var i = bgImgs.length - 1; i >= 0; i--) {
+        var r = bgImgs[i].getBoundingClientRect();
+        if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
+          hit = bgImgs[i];
+          break;
+        }
       }
-    }, { passive: true });
+      setActive(hit);
+    });
+    heroSection.addEventListener('mouseleave', function () {
+      setActive(null);
+    });
   }
 
 })();

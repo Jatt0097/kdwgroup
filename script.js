@@ -266,34 +266,86 @@
     startAutoplay();
   }
 
-  /* ---- stacked photo fade behind services hero ---- */
-  var servicesBg = document.getElementById('services-hero-bg');
-  if (servicesBg) {
-    var heroSection = servicesBg.closest('.services-hero');
-    var bgImgs = Array.prototype.slice.call(servicesBg.querySelectorAll('img'));
-    var activeImg = null;
+  /* ---- 3-row photo mosaic behind services hero ---- */
+  var servicesMosaic = document.getElementById('services-mosaic');
+  if (servicesMosaic) {
+    var msHeroSection = servicesMosaic.closest('.services-hero');
 
-    var setActive = function (img) {
-      if (img === activeImg) return;
-      activeImg = img;
-      bgImgs.forEach(function (el) { el.classList.toggle('is-active', el === img); });
-      heroSection.classList.toggle('has-active', !!img);
+    // EDIT: full photo pool — squares are filled randomly from this list
+    var MOSAIC_IMAGES = [
+      'builtin-closet-01.jpg', 'builtin-media-01.jpg', 'builtin-media-02.jpg', 'builtin-wetbar-01.jpg',
+      'drawing-elevation-a-2.jpg', 'drawing-elevation-a.jpg', 'drawing-fridge-detail.jpg',
+      'drawing-island-elv-2.jpg', 'drawing-island-elv.jpg', 'drawing-plan.jpg',
+      'kitchen-01.jpg', 'kitchen-02.jpg', 'kitchen-03.jpg', 'kitchen-04.jpg', 'kitchen-05.jpg',
+      'kitchen-06.jpg', 'kitchen-07.jpg', 'kitchen-08.jpg', 'kitchen-09.jpg', 'kitchen-10.jpg',
+      'kitchen-11.jpg', 'kitchen-12.jpg'
+    ];
+
+    var msSquareSize = 0;
+    var msCols = 0;
+    var msSquares = [];
+    var msActive = null;
+
+    var msRandomImage = function () {
+      return MOSAIC_IMAGES[Math.floor(Math.random() * MOSAIC_IMAGES.length)];
     };
 
-    heroSection.addEventListener('mousemove', function (e) {
-      var hit = null;
-      // later images are drawn on top, so check in reverse so the topmost wins
-      for (var i = bgImgs.length - 1; i >= 0; i--) {
-        var r = bgImgs[i].getBoundingClientRect();
-        if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
-          hit = bgImgs[i];
-          break;
+    var buildMosaic = function () {
+      servicesMosaic.innerHTML = '';
+      msSquares = [];
+      msActive = null;
+      msHeroSection.classList.remove('has-active');
+
+      var heroHeight = msHeroSection.offsetHeight;
+      var availableWidth = servicesMosaic.getBoundingClientRect().width;
+
+      msSquareSize = heroHeight / 3;
+      msCols = Math.ceil(availableWidth / msSquareSize);
+
+      for (var row = 0; row < 3; row++) {
+        for (var col = 0; col < msCols; col++) {
+          var sq = document.createElement('div');
+          sq.className = 'mosaic-sq';
+          sq.style.left = (col * msSquareSize) + 'px';
+          sq.style.top = (row * msSquareSize) + 'px';
+          sq.style.width = msSquareSize + 'px';
+          sq.style.height = msSquareSize + 'px';
+          sq.style.backgroundImage = "url('" + msRandomImage() + "')";
+          servicesMosaic.appendChild(sq);
+          msSquares.push(sq);
         }
       }
-      setActive(hit);
+    };
+
+    var msSetActive = function (sq) {
+      if (sq === msActive) return;
+      if (msActive) msActive.classList.remove('is-active');
+      msActive = sq;
+      if (sq) sq.classList.add('is-active');
+      msHeroSection.classList.toggle('has-active', !!sq);
+    };
+
+    msHeroSection.addEventListener('mousemove', function (e) {
+      var mosaicRect = servicesMosaic.getBoundingClientRect();
+      var relX = e.clientX - mosaicRect.left;
+      var relY = e.clientY - mosaicRect.top;
+      if (relX < 0 || relY < 0 || relX >= mosaicRect.width || relY >= mosaicRect.height) {
+        msSetActive(null);
+        return;
+      }
+      var col = Math.min(msCols - 1, Math.floor(relX / msSquareSize));
+      var row = Math.min(2, Math.floor(relY / msSquareSize));
+      msSetActive(msSquares[row * msCols + col]);
     });
-    heroSection.addEventListener('mouseleave', function () {
-      setActive(null);
+    msHeroSection.addEventListener('mouseleave', function () {
+      msSetActive(null);
+    });
+
+    buildMosaic();
+    var msResizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(msResizeTimer);
+      msResizeTimer = setTimeout(buildMosaic, 200);
     });
   }
 

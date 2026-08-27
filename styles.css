@@ -282,7 +282,7 @@ h3, .h3{
   .nav-links, .nav-cta{ display: none; }
 }
 
-/* ---------- stacked photo fade behind services hero ---------- */
+/* ---------- 3-row photo mosaic behind services hero (built by JS) ---------- */
 .services-hero{
   position: relative;
   overflow: hidden;
@@ -293,37 +293,35 @@ h3, .h3{
   z-index: 0;
   pointer-events: none;
 }
-.services-hero-bg img{
+/* mirrors .container's own max-width/margin/gutter math, but since it sits inside
+   the absolutely-positioned .services-hero-bg (not the flex .hero), it actually
+   resolves correctly instead of shrinking to fit its content like the real .container does */
+.services-mosaic-outer{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  height: 100%;
+  box-sizing: border-box;
+}
+.services-mosaic{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* clips the last square in each row at the margin edge */
+}
+.mosaic-sq{
   position: absolute;
-  width: 62%;
-  height: 70%;
-  object-fit: cover;
-  border-radius: 2px;
+  background-size: cover;
+  background-position: center;
   opacity: 0;
-  filter: grayscale(.1);
-  box-shadow: 0 30px 70px rgba(0,0,0,.35);
+  filter: grayscale(.08);
   transition: opacity .5s var(--ease);
 }
-/* fixed positions, each offset ~10mm (37.8px) further from the top-left corner */
-.services-hero-bg img:nth-child(1){ top: 37.8px;  left: 37.8px;  }
-.services-hero-bg img:nth-child(2){ top: 75.6px;  left: 75.6px;  }
-.services-hero-bg img:nth-child(3){ top: 113.4px; left: 113.4px; }
-.services-hero-bg img:nth-child(4){ top: 151.2px; left: 151.2px; }
-.services-hero-bg img:nth-child(5){ top: 189px;   left: 189px;   }
-.services-hero-bg img.is-active{ opacity: 1; }
+.mosaic-sq.is-active{ opacity: 1; }
 
-.services-hero > .container{ position: relative; z-index: 1; transition: mix-blend-mode 0s; }
-/* while a photo is showing behind it, the text blends against it instead of sitting flatly on top */
+.services-hero > .container{ position: relative; z-index: 1; }
+/* while a square is showing behind it, the text blends against it instead of sitting flatly on top */
 .services-hero.has-active > .container{ mix-blend-mode: difference; }
-
-@media (max-width: 720px){
-  .services-hero-bg img{ width: 78%; height: 46%; }
-  .services-hero-bg img:nth-child(1){ top: 18px; left: 18px; }
-  .services-hero-bg img:nth-child(2){ top: 36px; left: 36px; }
-  .services-hero-bg img:nth-child(3){ top: 54px; left: 54px; }
-  .services-hero-bg img:nth-child(4){ top: 72px; left: 72px; }
-  .services-hero-bg img:nth-child(5){ top: 90px; left: 90px; }
-}
 
 /* ---------- launch intro (home page only) ---------- */
 .intro{

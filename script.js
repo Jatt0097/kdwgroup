@@ -270,6 +270,11 @@
   var servicesMosaic = document.getElementById('services-mosaic');
   if (servicesMosaic) {
     var msHeroSection = servicesMosaic.closest('.services-hero');
+    var msHeaderEl = document.querySelector('.site-header');
+    // capture the section's original CSS-driven min-height ONCE, before we ever
+    // touch it, so repeated rebuilds (e.g. on resize) can restore it to remeasure
+    // the natural size instead of compounding growth on top of our own extension
+    var msOriginalMinHeight = msHeroSection.style.minHeight || '';
 
     // EDIT: full photo pool — squares are filled randomly from this list
     var MOSAIC_IMAGES = [
@@ -281,8 +286,11 @@
       'kitchen-11.jpg', 'kitchen-12.jpg'
     ];
 
-    var msSquareSize = 0;
+    var OVERLAP = 1.3; // squares render 30% larger than their grid step, so neighbors overlap for a flowing look
+
+    var msSquareSize = 0; // grid step (logical cell size, used for hover math)
     var msCols = 0;
+    var msTopOffset = 0; // header height — where row 0 actually starts
     var msSquares = [];
     var msActive = null;
 
@@ -296,20 +304,34 @@
       msActive = null;
       msHeroSection.classList.remove('has-active');
 
-      var heroHeight = msHeroSection.offsetHeight;
-      var availableWidth = servicesMosaic.getBoundingClientRect().width;
+      // reset to the natural, content-driven height before measuring, so this
+      // works correctly even when called again after a real window resize
+      msHeroSection.style.minHeight = msOriginalMinHeight;
+      var baseHeight = msHeroSection.offsetHeight;
+      var headerHeight = msHeaderEl ? msHeaderEl.offsetHeight : 0;
 
-      msSquareSize = heroHeight / 3;
+      // extend the section downward by the header's height, so the mosaic still
+      // gets 3 full-size rows entirely below the nav instead of losing a row's
+      // worth of space to it
+      msHeroSection.style.minHeight = (baseHeight + headerHeight) + 'px';
+
+      var availableWidth = servicesMosaic.getBoundingClientRect().width; // full-bleed now
+      msSquareSize = baseHeight / 3;
       msCols = Math.ceil(availableWidth / msSquareSize);
+      msTopOffset = headerHeight;
+
+      var visualSize = msSquareSize * OVERLAP;
+      var visualInset = (visualSize - msSquareSize) / 2;
 
       for (var row = 0; row < 3; row++) {
         for (var col = 0; col < msCols; col++) {
           var sq = document.createElement('div');
           sq.className = 'mosaic-sq';
-          sq.style.left = (col * msSquareSize) + 'px';
-          sq.style.top = (row * msSquareSize) + 'px';
-          sq.style.width = msSquareSize + 'px';
-          sq.style.height = msSquareSize + 'px';
+          sq.style.left = (col * msSquareSize - visualInset) + 'px';
+          sq.style.top = (msTopOffset + row * msSquareSize - visualInset) + 'px';
+          sq.style.width = visualSize + 'px';
+          sq.style.height = visualSize + 'px';
+          sq.style.zIndex = String(row * msCols + col); // later squares layer on top, reinforcing the flow
           sq.style.backgroundImage = "url('" + msRandomImage() + "')";
           servicesMosaic.appendChild(sq);
           msSquares.push(sq);
@@ -328,8 +350,8 @@
     msHeroSection.addEventListener('mousemove', function (e) {
       var mosaicRect = servicesMosaic.getBoundingClientRect();
       var relX = e.clientX - mosaicRect.left;
-      var relY = e.clientY - mosaicRect.top;
-      if (relX < 0 || relY < 0 || relX >= mosaicRect.width || relY >= mosaicRect.height) {
+      var relY = e.clientY - mosaicRect.top - msTopOffset;
+      if (relX < 0 || relY < 0 || relX >= mosaicRect.width || relY >= msSquareSize * 3) {
         msSetActive(null);
         return;
       }

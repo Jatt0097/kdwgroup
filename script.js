@@ -276,17 +276,15 @@
     // the natural size instead of compounding growth on top of our own extension
     var msOriginalMinHeight = msHeroSection.style.minHeight || '';
 
-    // EDIT: full photo pool — squares are filled randomly from this list
+    // fallback pool — only used if manifest.json can't be loaded (e.g. the
+    // Cloudflare build command hasn't been set yet). Once manifest.json is
+    // live, this list is replaced automatically and never needs editing.
     var MOSAIC_IMAGES = [
-      'builtin-closet-01.jpg', 'builtin-media-01.jpg', 'builtin-media-02.jpg', 'builtin-wetbar-01.jpg',
-      'drawing-elevation-a-2.jpg', 'drawing-elevation-a.jpg', 'drawing-fridge-detail.jpg',
-      'drawing-island-elv-2.jpg', 'drawing-island-elv.jpg', 'drawing-plan.jpg',
-      'kitchen-01.jpg', 'kitchen-02.jpg', 'kitchen-03.jpg', 'kitchen-04.jpg', 'kitchen-05.jpg',
-      'kitchen-06.jpg', 'kitchen-07.jpg', 'kitchen-08.jpg', 'kitchen-09.jpg', 'kitchen-10.jpg',
-      'kitchen-11.jpg', 'kitchen-12.jpg'
+      'builtin-wetbar-01.jpg', 'drawing-plan.jpg', 'kitchen-01.jpg',
+      'kitchen-04.jpg', 'kitchen-09.jpg'
     ];
 
-    var OVERLAP = 1.3; // squares render 30% larger than their grid step, so neighbors overlap for a flowing look
+    var OVERLAP = 1.6; // squares render 60% larger than their grid step (~2x the previous overlap), so neighbors overlap more for a stronger flowing look
 
     var msSquareSize = 0; // grid step (logical cell size, used for hover math)
     var msCols = 0;
@@ -310,18 +308,18 @@
       var baseHeight = msHeroSection.offsetHeight;
       var headerHeight = msHeaderEl ? msHeaderEl.offsetHeight : 0;
 
-      // extend the section downward by the header's height, so the mosaic still
-      // gets 3 full-size rows entirely below the nav instead of losing a row's
-      // worth of space to it
-      msHeroSection.style.minHeight = (baseHeight + headerHeight) + 'px';
-
       var availableWidth = servicesMosaic.getBoundingClientRect().width; // full-bleed now
       msSquareSize = baseHeight / 3;
       msCols = Math.ceil(availableWidth / msSquareSize);
-      msTopOffset = headerHeight;
 
       var visualSize = msSquareSize * OVERLAP;
       var visualInset = (visualSize - msSquareSize) / 2;
+
+      // row 0's rendered top edge is (logical top - visualInset), so push the
+      // logical origin down by that same amount — otherwise the overlap bleed
+      // pushes the top row up underneath the fixed nav bar
+      msTopOffset = headerHeight + visualInset;
+      msHeroSection.style.minHeight = (baseHeight + headerHeight + visualInset) + 'px';
 
       for (var row = 0; row < 3; row++) {
         for (var col = 0; col < msCols; col++) {
@@ -363,12 +361,30 @@
       msSetActive(null);
     });
 
-    buildMosaic();
-    var msResizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(msResizeTimer);
-      msResizeTimer = setTimeout(buildMosaic, 200);
-    });
+    var msInit = function () {
+      buildMosaic();
+      var msResizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(msResizeTimer);
+        msResizeTimer = setTimeout(buildMosaic, 200);
+      });
+    };
+
+    // load the auto-generated photo list; if it's missing (e.g. no Cloudflare
+    // build command set yet, or running the site locally without a build
+    // step), silently fall back to the small hardcoded list above instead
+    fetch('manifest.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('manifest.json not found');
+        return res.json();
+      })
+      .then(function (list) {
+        if (Array.isArray(list) && list.length) MOSAIC_IMAGES = list;
+        msInit();
+      })
+      .catch(function () {
+        msInit();
+      });
   }
 
 })();

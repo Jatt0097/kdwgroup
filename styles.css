@@ -379,7 +379,7 @@ h3, .h3{
 
 .hero{
   min-height: 100svh;
-  display: flex; align-items: flex-end;
+  display: flex; align-items: center;
   padding-top: 7rem;
   position: relative;
 }

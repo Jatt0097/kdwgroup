@@ -135,6 +135,25 @@
     requestAnimationFrame(step);
   }
 
+  /* ---- auto-caption from folder name ----
+     Any figure marked data-autoname gets its visible name (and data-title,
+     used by the lightbox) generated from its image/video's own folder name
+     — e.g. "images/kitchens/burlington-ontario/photo-1.jpg" becomes
+     "Burlington Ontario". Rename the folder (and update the src to match),
+     and the label updates itself everywhere — no HTML caption to edit. */
+  document.querySelectorAll('[data-autoname]').forEach(function (fig) {
+    var media = fig.querySelector('img, video');
+    if (!media) return;
+    var src = media.getAttribute('src') || '';
+    var parts = src.split('/');
+    var slug = parts.length >= 2 ? parts[parts.length - 2] : '';
+    if (!slug) return;
+    var name = slug.replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+    fig.setAttribute('data-title', name);
+    var label = fig.querySelector('figcaption span:first-child') || fig.querySelector('figcaption, .showcase-name');
+    if (label) label.textContent = name;
+  });
+
   /* ---- gallery filter ---- */
   var filterBar = document.querySelector('.filter-bar');
   if (filterBar) {
@@ -152,25 +171,82 @@
     });
   }
 
-  /* ---- lightbox ---- */
+  /* ---- lightbox (supports multiple photos per project via manifest.json) ---- */
   var lightbox = document.querySelector('.lightbox');
   if (lightbox) {
     var lbImage = lightbox.querySelector('.lightbox-img');
     var lbTitle = lightbox.querySelector('[data-lb-title]');
     var lbMeta = lightbox.querySelector('[data-lb-meta]');
+    var lbPrev = lightbox.querySelector('.lightbox-prev');
+    var lbNext = lightbox.querySelector('.lightbox-next');
+
+    var lbPhotos = [];
+    var lbIndex = 0;
+    var lbCategory = '';
+    var lbTitleText = '';
+
+    // project folder slug -> sorted list of "images/.../slug/file.jpg" paths,
+    // built from manifest.json once it loads (falls back to each item's
+    // single <img> if manifest.json isn't available yet or ever). Keyed by
+    // the immediate parent folder, so this works at any nesting depth.
+    var projectPhotos = {};
+    fetch('manifest.json')
+      .then(function (res) { if (!res.ok) throw new Error('no manifest'); return res.json(); })
+      .then(function (list) {
+        if (!Array.isArray(list)) return;
+        list.forEach(function (p) {
+          var parts = p.split('/');
+          if (parts.length < 2) return;
+          var slug = parts[parts.length - 2];
+          (projectPhotos[slug] = projectPhotos[slug] || []).push(p);
+        });
+      })
+      .catch(function () {});
+
+    function renderLbPhoto() {
+      lbImage.src = lbPhotos[lbIndex];
+      lbImage.alt = lbTitleText;
+      lbTitle.textContent = lbTitleText;
+      var multi = lbPhotos.length > 1;
+      lbMeta.textContent = multi
+        ? lbCategory + ' · ' + (lbIndex + 1) + '/' + lbPhotos.length
+        : lbCategory;
+      if (lbPrev) lbPrev.hidden = !multi;
+      if (lbNext) lbNext.hidden = !multi;
+    }
+
     document.querySelectorAll('.gallery-item').forEach(function (item) {
       item.addEventListener('click', function () {
-        var img = item.querySelector('img');
-        if (img) {
-          lbImage.src = img.src;
-          lbImage.alt = img.alt || '';
-        }
-        lbTitle.textContent = item.getAttribute('data-title') || '';
-        lbMeta.textContent = item.getAttribute('data-category') || '';
+        var fallbackImg = item.querySelector('img');
+        var srcParts = (fallbackImg ? fallbackImg.getAttribute('src') : '').split('/');
+        var slug = srcParts.length >= 2 ? srcParts[srcParts.length - 2] : '';
+        lbPhotos = (slug && projectPhotos[slug] && projectPhotos[slug].length)
+          ? projectPhotos[slug]
+          : [fallbackImg ? fallbackImg.src : ''];
+        lbIndex = 0;
+        lbCategory = item.getAttribute('data-category') || '';
+        lbTitleText = item.getAttribute('data-title') || '';
+        renderLbPhoto();
         lightbox.classList.add('is-open');
         document.body.style.overflow = 'hidden';
       });
     });
+
+    if (lbPrev) {
+      lbPrev.addEventListener('click', function (e) {
+        e.stopPropagation();
+        lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+        renderLbPhoto();
+      });
+    }
+    if (lbNext) {
+      lbNext.addEventListener('click', function (e) {
+        e.stopPropagation();
+        lbIndex = (lbIndex + 1) % lbPhotos.length;
+        renderLbPhoto();
+      });
+    }
+
     lightbox.addEventListener('click', function (e) {
       if (e.target === lightbox || e.target.closest('.lightbox-close')) {
         lightbox.classList.remove('is-open');
@@ -178,10 +254,13 @@
       }
     });
     document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
       if (e.key === 'Escape') {
         lightbox.classList.remove('is-open');
         document.body.style.overflow = '';
       }
+      if (e.key === 'ArrowLeft' && lbPrev && !lbPrev.hidden) lbPrev.click();
+      if (e.key === 'ArrowRight' && lbNext && !lbNext.hidden) lbNext.click();
     });
   }
 
@@ -217,10 +296,10 @@
       btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
     });
   }
-  /* ---- hero showcase (auto slideshow, home page only) ---- */
-  var showcase = document.getElementById('hero-showcase');
-  if (showcase) {
+  /* ---- showcase carousels (auto slideshow + swipe; used by hero + drawings) ---- */
+  document.querySelectorAll('.showcase').forEach(function (showcase) {
     var slides = showcase.querySelectorAll('.showcase-slide');
+    if (!slides.length) return;
     var dashes = showcase.querySelectorAll('.dash');
     var captionBox = showcase.querySelector('.showcase-caption');
     var nameEl = showcase.querySelector('.showcase-name');
@@ -232,15 +311,15 @@
 
     function renderSlide(i) {
       slides[current].classList.remove('is-active');
-      dashes[current].classList.remove('is-active');
+      if (dashes.length) dashes[current].classList.remove('is-active');
       current = (i + slides.length) % slides.length;
       slides[current].classList.add('is-active');
-      dashes[current].classList.add('is-active');
+      if (dashes.length) dashes[current].classList.add('is-active');
       var s = slides[current];
-      nameEl.textContent = s.getAttribute('data-name');
-      locEl.textContent = s.getAttribute('data-loc');
-      indexEl.textContent = String(current + 1).padStart(2, '0');
-      if (!reduceMotion) {
+      if (nameEl) nameEl.textContent = s.getAttribute('data-name') || '';
+      if (locEl) locEl.textContent = s.getAttribute('data-loc') || '';
+      if (indexEl) indexEl.textContent = String(current + 1).padStart(2, '0');
+      if (!reduceMotion && captionBox) {
         captionBox.classList.remove('pulse');
         void captionBox.offsetWidth; // restart animation
         captionBox.classList.add('pulse');
@@ -249,22 +328,42 @@
     function nextSlide() { renderSlide(current + 1); }
     function prevSlide() { renderSlide(current - 1); }
     function startAutoplay() {
-      if (reduceMotion) return;
+      if (reduceMotion || slides.length < 2) return;
       stopAutoplay();
       autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS);
     }
     function stopAutoplay() { if (autoplayTimer) clearInterval(autoplayTimer); }
 
-    showcase.querySelector('.showcase-next').addEventListener('click', function () { nextSlide(); startAutoplay(); });
-    showcase.querySelector('.showcase-prev').addEventListener('click', function () { prevSlide(); startAutoplay(); });
+    var nextBtn = showcase.querySelector('.showcase-next');
+    var prevBtn = showcase.querySelector('.showcase-prev');
+    if (nextBtn) nextBtn.addEventListener('click', function () { nextSlide(); startAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { prevSlide(); startAutoplay(); });
     dashes.forEach(function (d, i) {
       d.addEventListener('click', function () { renderSlide(i); startAutoplay(); });
     });
     showcase.addEventListener('mouseenter', stopAutoplay);
     showcase.addEventListener('mouseleave', startAutoplay);
 
+    // touch swipe (mobile)
+    var stage = showcase.querySelector('.showcase-stage');
+    var touchStartX = null;
+    if (stage) {
+      stage.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      stage.addEventListener('touchend', function (e) {
+        if (touchStartX === null) return;
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0) nextSlide(); else prevSlide();
+          startAutoplay();
+        }
+        touchStartX = null;
+      });
+    }
+
     startAutoplay();
-  }
+  });
 
   /* ---- 3-row photo mosaic behind services hero ---- */
   var servicesMosaic = document.getElementById('services-mosaic');
@@ -280,8 +379,8 @@
     // Cloudflare build command hasn't been set yet). Once manifest.json is
     // live, this list is replaced automatically and never needs editing.
     var MOSAIC_IMAGES = [
-      'builtin-wetbar-01.jpg', 'drawing-plan.jpg', 'kitchen-01.jpg',
-      'kitchen-04.jpg', 'kitchen-09.jpg'
+      'images/walnut-wet-bar/photo-1.jpg', 'images/kitchen-layout-plan/photo-1.jpg', 'images/waterfall-island-kitchen/photo-1.jpg',
+      'images/matte-black-waterfall-kitchen/photo-1.jpg', 'images/espresso-marble-kitchen/photo-1.jpg'
     ];
 
     var OVERLAP = 1.6; // squares render 60% larger than their grid step (~2x the previous overlap), so neighbors overlap more for a stronger flowing look

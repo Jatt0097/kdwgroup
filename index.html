@@ -113,19 +113,19 @@
       <div class="showcase" id="hero-showcase">
         <div class="showcase-stage">
           <figure class="showcase-slide is-active" data-name="Matte Black Waterfall Kitchen" data-loc="Ontario">
-            <img src="kitchen-04.jpg" alt="Matte black gloss kitchen with waterfall island">
+            <img src="images/matte-black-waterfall-kitchen/photo-1.jpg" alt="Matte black gloss kitchen with waterfall island">
           </figure>
           <figure class="showcase-slide" data-name="Bright White Island Kitchen" data-loc="Ontario">
-            <img src="kitchen-02.jpg" alt="Bright white kitchen with large island and pendant lighting">
+            <img src="images/bright-white-island-kitchen/photo-1.jpg" alt="Bright white kitchen with large island and pendant lighting">
           </figure>
           <figure class="showcase-slide" data-name="Gloss Grey &amp; Brass Kitchen" data-loc="Ontario">
-            <img src="kitchen-06.jpg" alt="Glossy grey cabinetry kitchen with brass hardware">
+            <img src="images/gloss-grey-brass-kitchen/photo-1.jpg" alt="Glossy grey cabinetry kitchen with brass hardware">
           </figure>
           <figure class="showcase-slide" data-name="Espresso &amp; Marble Kitchen" data-loc="Ontario">
-            <img src="kitchen-09.jpg" alt="Dark espresso cabinetry kitchen with marble waterfall hood">
+            <img src="images/espresso-marble-kitchen/photo-1.jpg" alt="Dark espresso cabinetry kitchen with marble waterfall hood">
           </figure>
           <figure class="showcase-slide" data-name="Walnut Wet Bar" data-loc="Ontario">
-            <img src="builtin-wetbar-01.jpg" alt="Custom walnut wet bar with glass cabinetry">
+            <img src="images/walnut-wet-bar/photo-1.jpg" alt="Custom walnut wet bar with glass cabinetry">
           </figure>
         </div>
 
@@ -209,10 +209,65 @@
         </div>
         <a href="gallery.html" class="btn btn-ghost">Full Gallery <span class="btn-arrow">→</span></a>
       </div>
+      <!-- EDIT: rename each folder + update its src below to match once you know what to call it — the caption updates itself automatically -->
       <div class="grid-3 stagger">
-        <div class="reveal"><div class="ph" style="height:320px;" data-label="Project — placeholder 01"></div></div>
-        <div class="reveal"><div class="ph" style="height:320px;" data-label="Project — placeholder 02"></div></div>
-        <div class="reveal"><div class="ph" style="height:320px;" data-label="Project — placeholder 03"></div></div>
+        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
+          <img src="images/kitchens/burlington-ontario/photo-1.jpg" alt="Kitchen project in Burlington, Ontario">
+          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
+          <img src="images/kitchens/markham-ontario/photo-1.jpg" alt="Kitchen project in Markham, Ontario">
+          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
+          <img src="images/kitchens/milton-ontario/photo-1.jpg" alt="Kitchen project in Milton, Ontario">
+          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
+          <img src="images/kitchens/oakville-ontario/photo-1.jpg" alt="Kitchen project in Oakville, Ontario">
+          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
+          <img src="images/kitchens/more-kitchen-projects/photo-1.jpg" alt="Additional kitchen project">
+          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECT VIDEOS ================= -->
+  <!-- EDIT: swap each src for your real project video. Captions are automatic — rename the video's folder (e.g. videos/video-1 -> videos/markham-walkthrough) and update the src below to match, and the caption updates itself. -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <span class="eyebrow">In Motion</span>
+        <h2 style="margin-top:1rem;">Project videos.</h2>
+      </div>
+      <div class="grid-3 stagger">
+        <figure class="reveal video-card" data-autoname>
+          <video src="videos/video-1/clip.mp4" muted loop autoplay playsinline controls></video>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="reveal video-card" data-autoname>
+          <video src="videos/video-2/clip.mp4" muted loop autoplay playsinline controls></video>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="reveal video-card" data-autoname>
+          <video src="videos/video-3/clip.mp4" muted loop autoplay playsinline controls></video>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="reveal video-card" data-autoname>
+          <video src="videos/video-4/clip.mp4" muted loop autoplay playsinline controls></video>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="reveal video-card" data-autoname>
+          <video src="videos/video-5/clip.mp4" muted loop autoplay playsinline controls></video>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="reveal video-card" data-autoname>
+          <video src="videos/video-6/clip.mp4" muted loop autoplay playsinline controls></video>
+          <figcaption></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -298,6 +353,20 @@
     </div>
   </div>
 </footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-arrow lightbox-prev" aria-label="Previous photo" type="button">←</button>
+  <button class="lightbox-arrow lightbox-next" aria-label="Next photo" type="button">→</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" src="" alt="">
+    <div class="lightbox-caption">
+      <span data-lb-title></span>
+      <span data-lb-meta class="muted"></span>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

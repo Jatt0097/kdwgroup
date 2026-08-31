@@ -23,9 +23,6 @@
 <body>
 
 <!-- ================= LAUNCH INTRO (home page only) ================= -->
-<!-- Pure-CSS timed reveal: letters stagger in, hold, then the overlay fades to
-     reveal the page beneath. Works even with JS disabled; script.js only adds
-     the optional "Skip" button and pauses page scroll while it plays. -->
 <div class="intro" id="site-intro" aria-hidden="true">
   <div class="intro-mark">
     <span class="intro-letter" style="--i:0">k</span>
@@ -97,7 +94,6 @@
 <main>
 
   <!-- ================= HERO ================= -->
-  <!-- EDIT: hero headline / subhead / CTAs -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
@@ -109,23 +105,23 @@
           <a href="contact.html" class="btn btn-ghost">Start a Project</a>
         </div>
       </div>
-      <!-- EDIT: update data-name / data-loc with your real project names & locations -->
+      
       <div class="showcase" id="hero-showcase">
         <div class="showcase-stage">
           <figure class="showcase-slide is-active" data-name="Matte Black Waterfall Kitchen" data-loc="Ontario">
-            <img src="images/matte-black-waterfall-kitchen/photo-1.jpg" alt="Matte black gloss kitchen with waterfall island">
+            <img src="kitchen-01.jpg" alt="Matte black gloss kitchen with waterfall island">
           </figure>
           <figure class="showcase-slide" data-name="Bright White Island Kitchen" data-loc="Ontario">
-            <img src="images/bright-white-island-kitchen/photo-1.jpg" alt="Bright white kitchen with large island and pendant lighting">
+            <img src="kitchen-02.jpg" alt="Bright white kitchen with large island and pendant lighting">
           </figure>
           <figure class="showcase-slide" data-name="Gloss Grey &amp; Brass Kitchen" data-loc="Ontario">
-            <img src="images/gloss-grey-brass-kitchen/photo-1.jpg" alt="Glossy grey cabinetry kitchen with brass hardware">
+            <img src="kitchen-03.jpg" alt="Glossy grey cabinetry kitchen with brass hardware">
           </figure>
           <figure class="showcase-slide" data-name="Espresso &amp; Marble Kitchen" data-loc="Ontario">
-            <img src="images/espresso-marble-kitchen/photo-1.jpg" alt="Dark espresso cabinetry kitchen with marble waterfall hood">
+            <img src="kitchen-04.jpg" alt="Dark espresso cabinetry kitchen with marble waterfall hood">
           </figure>
           <figure class="showcase-slide" data-name="Walnut Wet Bar" data-loc="Ontario">
-            <img src="images/walnut-wet-bar/photo-1.jpg" alt="Custom walnut wet bar with glass cabinetry">
+            <img src="builtin-wetbar-01.jpg" alt="Custom walnut wet bar with glass cabinetry">
           </figure>
         </div>
 
@@ -159,16 +155,16 @@
       <span>Custom Cabinetry</span><span>Kitchen Millwork</span><span>Built-Ins</span><span>Fine Joinery</span>
     </div>
   </div>
-<!-- ================= STATEMENT ================= -->
-  <!-- EDIT: studio philosophy paragraph -->
+
+  <!-- ================= STATEMENT ================= -->
   <section>
     <div class="container statement reveal">
       <p class="eyebrow">Our Approach</p>
       <p class="h2">Every kitchen starts with how a family actually lives in it — then we draw, cut, and finish around that, down to the last reveal line and hinge.</p>
     </div>
   </section>
-<!-- ================= SERVICES PREVIEW ================= -->
-  <!-- EDIT: service names / descriptions — full detail lives on services.html -->
+
+  <!-- ================= SERVICES PREVIEW ================= -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -199,7 +195,8 @@
       </div>
     </div>
   </section>
-<!-- ================= WORK PREVIEW ================= -->
+
+  <!-- ================= WORK PREVIEW ================= -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem; display:flex; justify-content:space-between; align-items:end; gap:1rem; flex-wrap:wrap;">
@@ -209,26 +206,27 @@
         </div>
         <a href="gallery.html" class="btn btn-ghost">Full Gallery <span class="btn-arrow">→</span></a>
       </div>
-      <!-- EDIT: rename each folder + update its src below to match once you know what to call it — the caption updates itself automatically -->
+      
+      <!-- Updated paths matching your exact GitHub subfolder names -->
       <div class="grid-3 stagger">
         <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Burlington Ontario/photo-1.jpg" alt="Kitchen project in Burlington, Ontario">
+          <img src="Burlington Ontario/kitchen-01.jpg" alt="Kitchen project in Burlington, Ontario">
           <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
         </figure>
         <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Markham, Ontario/photo-1.jpg" alt="Kitchen project in Markham, Ontario">
+          <img src="Markham, Ontario/kitchen-02.jpg" alt="Kitchen project in Markham, Ontario">
           <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
         </figure>
         <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Milton, Ontario/photo-1.jpg" alt="Kitchen project in Milton, Ontario">
+          <img src="Milton, Ontario/kitchen-03.jpg" alt="Kitchen project in Milton, Ontario">
           <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
         </figure>
         <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Oakville, Ontario/photo-1.jpg" alt="Kitchen project in Oakville, Ontario">
+          <img src="Oakville, Ontario/kitchen-04.jpg" alt="Kitchen project in Oakville, Ontario">
           <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
         </figure>
         <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/More kitchen projects/photo-1.jpg" alt="Additional kitchen project">
+          <img src="More kitchen projects/kitchen-05.jpg" alt="Additional kitchen project">
           <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
         </figure>
       </div>
@@ -236,36 +234,28 @@
   </section>
 
   <!-- ================= PROJECT VIDEOS ================= -->
-  <!-- EDIT: swap each src for your real project video. Captions are automatic — rename the video's folder (e.g. videos/video-1 -> videos/markham-walkthrough) and update the src below to match, and the caption updates itself. -->
   <section style="padding-top:0;">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
         <span class="eyebrow">In Motion</span>
         <h2 style="margin-top:1rem;">Project videos.</h2>
       </div>
+      <!-- Updated video paths matching your exact GitHub folder names -->
       <div class="grid-3 stagger">
         <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 1/clip.mp4" muted loop autoplay playsinline controls></video>
+          <video src="Video - 3.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
         <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 2/clip.mp4" muted loop autoplay playsinline controls></video>
+          <video src="Video - 4.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
         <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 3/clip.mp4" muted loop autoplay playsinline controls></video>
+          <video src="Video - 5.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
         <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 4/clip.mp4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 5/clip.mp4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 6/clip.mp4" muted loop autoplay playsinline controls></video>
+          <video src="Video - 6.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
       </div>
@@ -335,7 +325,6 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <!-- EDIT: real phone / email -->
         <a href="tel:+16477727289">647-772-7289</a>
         <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
         <p>kdwgroup.ca</p>

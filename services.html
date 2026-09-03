@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
   <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="index.html"><span data-text="Home">Home</span></a>
-    <a href="services.html"><span data-text="Services">Services</span></a>
+    <a href="services.html" class="is-active"><span data-text="Services">Services</span></a>
     <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
     <a href="about.html"><span data-text="About">About</span></a>
   </nav>
@@ -79,12 +79,12 @@
     <path d="M0 23 L540 23 L595 6 L650 40 L705 23 L1240 23"/>
   </svg>
 
-  <!-- ================= SERVICE ACCORDION ================= -->
-  <!-- EDIT: expand/replace each service's detail copy -->
+  <!-- ================= SERVICE ACCORDION & IMAGES ================= -->
   <section style="padding-top:2rem;">
     <div class="container reveal" style="max-width:900px;">
 
-      <div class="accordion-item is-open">
+      <!-- Service 01 -->
+      <div class="accordion-item is-open" style="margin-bottom: 2rem;">
         <button class="accordion-trigger" aria-expanded="true">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">01</span>
@@ -100,11 +100,18 @@
               <li>Custom sizing for awkward or non-standard spaces</li>
               <li>Islands, pantries, and appliance integration</li>
             </ul>
+            <div style="margin-top: 1.5rem;">
+              <figure class="gallery-item" data-category="services" data-images="services/photo-1.JPG,services/photo-1.jpg">
+                <img src="services/photo-1.JPG" alt="Custom Kitchen Cabinetry" onerror="this.onerror=null; this.src='services/photo-1.jpg';">
+                <figcaption><span>Custom Kitchen Cabinetry</span><span class="muted">Services</span></figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordion-item">
+      <!-- Service 02 -->
+      <div class="accordion-item" style="margin-bottom: 2rem;">
         <button class="accordion-trigger" aria-expanded="false">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">02</span>
@@ -120,11 +127,18 @@
               <li>Wainscoting &amp; wall panelling</li>
               <li>Custom mantels and architectural details</li>
             </ul>
+            <div style="margin-top: 1.5rem;">
+              <figure class="gallery-item" data-category="services" data-images="services/photo-2.JPG,services/photo-2.jpg">
+                <img src="services/photo-2.JPG" alt="Architectural Millwork" onerror="this.onerror=null; this.src='services/photo-2.jpg';">
+                <figcaption><span>Architectural Millwork</span><span class="muted">Services</span></figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordion-item">
+      <!-- Service 03 -->
+      <div class="accordion-item" style="margin-bottom: 2rem;">
         <button class="accordion-trigger" aria-expanded="false">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">03</span>
@@ -140,11 +154,18 @@
               <li>Closets, mudrooms &amp; pantries</li>
               <li>Window seats &amp; reading nooks</li>
             </ul>
+            <div style="margin-top: 1.5rem;">
+              <figure class="gallery-item" data-category="services" data-images="services/photo-3.JPG,services/photo-3.jpg">
+                <img src="services/photo-3.JPG" alt="Built-Ins and Shelving" onerror="this.onerror=null; this.src='services/photo-3.jpg';">
+                <figcaption><span>Built-Ins &amp; Shelving</span><span class="muted">Services</span></figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="accordion-item">
+      <!-- Service 04 -->
+      <div class="accordion-item" style="margin-bottom: 2rem;">
         <button class="accordion-trigger" aria-expanded="false">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">04</span>
@@ -160,6 +181,12 @@
               <li>Coordination with trades</li>
               <li>In-house installation team</li>
             </ul>
+            <div style="margin-top: 1.5rem;">
+              <figure class="gallery-item" data-category="services" data-images="services/photo-4.JPG,services/photo-4.jpg">
+                <img src="services/photo-4.JPG" alt="Renovation & Installation" onerror="this.onerror=null; this.src='services/photo-4.jpg';">
+                <figcaption><span>Renovation &amp; Installation</span><span class="muted">Services</span></figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -172,7 +199,6 @@
   </svg>
 
   <!-- ================= MATERIALS ================= -->
-  <!-- EDIT: swap for your real material / finish list -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -193,7 +219,6 @@
   </svg>
 
   <!-- ================= SHOP DRAWINGS ================= -->
-  <!-- Real shop drawings from past projects (client-identifying details removed) -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -292,6 +317,20 @@
     </div>
   </div>
 </footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox">
+  <button class="lightbox-close" aria-label="Close">✕</button>
+  <button class="lightbox-arrow lightbox-prev" aria-label="Previous photo" type="button">←</button>
+  <button class="lightbox-arrow lightbox-next" aria-label="Next photo" type="button">→</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" src="" alt="">
+    <div class="lightbox-caption">
+      <span data-lb-title></span>
+      <span data-lb-meta class="muted"></span>
+    </div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

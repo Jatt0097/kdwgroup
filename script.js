@@ -138,9 +138,9 @@
   /* ---- auto-caption from folder name ----
      Any figure marked data-autoname gets its visible name (and data-title,
      used by the lightbox) generated from its image/video's own folder name
-     — e.g. "images/kitchens/burlington-ontario/photo-1.jpg" becomes
-     "Burlington Ontario". Rename the folder (and update the src to match),
-     and the label updates itself everywhere — no HTML caption to edit. */
+     — e.g. "Burlington Ontario/photo-1.jpg" becomes "Burlington Ontario".
+     Rename the folder (and update the src to match), and the label updates
+     itself everywhere — no HTML caption to edit. */
   document.querySelectorAll('[data-autoname]').forEach(function (fig) {
     var media = fig.querySelector('img, video');
     if (!media) return;
@@ -185,10 +185,10 @@
     var lbCategory = '';
     var lbTitleText = '';
 
-    // project folder slug -> sorted list of "images/.../slug/file.jpg" paths,
-    // built from manifest.json once it loads (falls back to each item's
-    // single <img> if manifest.json isn't available yet or ever). Keyed by
-    // the immediate parent folder, so this works at any nesting depth.
+    // project folder slug -> sorted list of "slug/file.jpg" paths, built
+    // from manifest.json once it loads (falls back to each item's single
+    // <img> if manifest.json isn't available yet or ever). Keyed by the
+    // immediate parent folder, so this works at any nesting depth.
     var projectPhotos = {};
     fetch('manifest.json')
       .then(function (res) { if (!res.ok) throw new Error('no manifest'); return res.json(); })
@@ -379,8 +379,8 @@
     // Cloudflare build command hasn't been set yet). Once manifest.json is
     // live, this list is replaced automatically and never needs editing.
     var MOSAIC_IMAGES = [
-      'images/walnut-wet-bar/photo-1.jpg', 'images/kitchen-layout-plan/photo-1.jpg', 'images/waterfall-island-kitchen/photo-1.jpg',
-      'images/matte-black-waterfall-kitchen/photo-1.jpg', 'images/espresso-marble-kitchen/photo-1.jpg'
+      'walnut-wet-bar/photo-1.jpg', 'kitchen-layout-plan/photo-1.jpg', 'waterfall-island-kitchen/photo-1.jpg',
+      'matte-black-waterfall-kitchen/photo-1.jpg', 'espresso-marble-kitchen/photo-1.jpg'
     ];
 
     var OVERLAP = 1.6; // squares render 60% larger than their grid step (~2x the previous overlap), so neighbors overlap more for a stronger flowing look
@@ -396,6 +396,8 @@
     };
 
     var buildMosaic = function () {
+      msStopAuto();
+      msAutoActive = [];
       servicesMosaic.innerHTML = '';
       msSquares = [];
       msActive = null;
@@ -436,7 +438,14 @@
       }
     };
 
+    var msAutoTimer = null;
+    var msAutoActive = [];
+
     var msSetActive = function (sq) {
+      // clear whatever the auto-cycle has lit up when the mouse takes over
+      msAutoActive.forEach(function (s) { if (s !== sq) s.classList.remove('is-active'); });
+      msAutoActive = [];
+
       if (sq === msActive) return;
       if (msActive) msActive.classList.remove('is-active');
       msActive = sq;
@@ -444,7 +453,33 @@
       msHeroSection.classList.toggle('has-active', !!sq);
     };
 
+    var msAutoCycle = function () {
+      msAutoActive.forEach(function (sq) { sq.classList.remove('is-active'); });
+      msAutoActive = [];
+      if (!msSquares.length) return;
+
+      var count = Math.min(3, msSquares.length);
+      var pool = msSquares.slice();
+      for (var i = 0; i < count; i++) {
+        var idx = Math.floor(Math.random() * pool.length);
+        var sq = pool.splice(idx, 1)[0];
+        sq.classList.add('is-active');
+        msAutoActive.push(sq);
+      }
+      msHeroSection.classList.add('has-active');
+    };
+    var msStartAuto = function () {
+      msStopAuto();
+      if (reduceMotion) return;
+      msAutoCycle();
+      msAutoTimer = setInterval(msAutoCycle, 1800);
+    };
+    var msStopAuto = function () {
+      if (msAutoTimer) clearInterval(msAutoTimer);
+    };
+
     msHeroSection.addEventListener('mousemove', function (e) {
+      msStopAuto();
       var mosaicRect = servicesMosaic.getBoundingClientRect();
       var relX = e.clientX - mosaicRect.left;
       var relY = e.clientY - mosaicRect.top - msTopOffset;
@@ -458,14 +493,19 @@
     });
     msHeroSection.addEventListener('mouseleave', function () {
       msSetActive(null);
+      msStartAuto();
     });
 
     var msInit = function () {
       buildMosaic();
+      msStartAuto();
       var msResizeTimer;
       window.addEventListener('resize', function () {
         clearTimeout(msResizeTimer);
-        msResizeTimer = setTimeout(buildMosaic, 200);
+        msResizeTimer = setTimeout(function () {
+          buildMosaic();
+          msStartAuto();
+        }, 200);
       });
     };
 
@@ -478,7 +518,17 @@
         return res.json();
       })
       .then(function (list) {
-        if (Array.isArray(list) && list.length) MOSAIC_IMAGES = list;
+        if (Array.isArray(list) && list.length) {
+          // Use only images from the dedicated services folder (matches a
+          // top-level "service/..." or "services/..." folder either way,
+          // so it works regardless of which one you actually named it).
+          // Falls back to the full site-wide list if that folder is empty
+          // or hasn't been uploaded yet, so the mosaic is never blank.
+          var serviceImages = list.filter(function (p) {
+            return /^services?\//i.test(p);
+          });
+          MOSAIC_IMAGES = serviceImages.length ? serviceImages : list;
+        }
         msInit();
       })
       .catch(function () {

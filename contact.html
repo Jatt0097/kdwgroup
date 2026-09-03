@@ -10,6 +10,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Seamless integrated form container styles */
+  .integrated-form-wrap {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+  @media(max-width: 768px) {
+    .integrated-form-wrap { padding: 1.25rem; }
+  }
+</style>
 </head>
 <body>
 
@@ -65,17 +77,17 @@
 
 <main>
 
-  <section class="hero" style="min-height:44svh;">
+  <section class="hero" style="min-height:40svh;">
     <div class="container">
       <span class="eyebrow">Reach Us</span>
-      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(2.4rem,5.6vw,4.6rem);">Let's talk<br>about your kitchen.</h1>
-      <p class="lede muted" style="margin-top:1.4rem;">Tell us a bit about your project below, or reach out directly — we typically reply within one business day.</p>
+      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(2.4rem,5.6vw,4.6rem);">Let's talk<br>about your project.</h1>
+      <p class="lede muted" style="margin-top:1.4rem;">Submit your specifications and details below for a prompt project consultation.</p>
     </div>
   </section>
 
-  <!-- ================= CONTACT + FORM ================= -->
-  <section style="padding-top:1rem;">
-    <div class="container contact-grid reveal">
+  <!-- ================= CONTACT + INTEGRATED FORM ================= -->
+  <section style="padding-top:1rem; padding-bottom:4rem;">
+    <div class="container contact-grid reveal" style="align-items: start;">
 
       <div>
         <dl class="contact-info">
@@ -96,10 +108,9 @@
         </dl>
       </div>
 
-      <!-- FILLOUT FORM EMBED -->
-      <div class="fillout-wrap" id="fillout-embed-container">
-        <div style="width:100%;height:500px;" data-fillout-id="pSw8VXQMJLus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-        <script src="https://server.fillout.com/embed/v1/"></script>
+      <!-- SEAMLESSLY INTEGRATED FILLOUT FORM -->
+      <div class="integrated-form-wrap">
+        <div style="width:100%;height:500px;" data-fillout-id="pSw8VXQMJLus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
       </div>
 
     </div>

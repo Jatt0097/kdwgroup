@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
   <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="index.html"><span data-text="Home">Home</span></a>
-    <a href="services.html" class="is-active"><span data-text="Services">Services</span></a>
+    <a href="services.html"><span data-text="Services">Services</span></a>
     <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
     <a href="about.html"><span data-text="About">About</span></a>
   </nav>
@@ -65,22 +65,13 @@
 
 <main>
 
-  <!-- ================= PAGE HERO WITH SERVICES FOLDER MOSAIC BACKGROUND ================= -->
-  <section class="hero services-hero" style="min-height:85svh; display:flex; align-items:center; justify-content:center; padding: 6rem 0; position: relative; overflow: hidden;">
-    <!-- Background mosaic pulling directly from your services folder -->
-    <div class="services-hero-bg" id="services-hero-bg" aria-hidden="true" style="position: absolute; inset: 0; opacity: 0.4; z-index: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; filter: blur(2px) brightness(0.9); transform: scale(1.05);">
-      <img src="services/photo-1.JPG" alt="" onerror="this.onerror=null; this.src='services/photo-1.jpg';" style="width: 100%; height: 100%; object-fit: cover;">
-      <img src="services/photo-2.JPG" alt="" onerror="this.onerror=null; this.src='services/photo-2.jpg';" style="width: 100%; height: 100%; object-fit: cover;">
-      <img src="services/photo-3.JPG" alt="" onerror="this.onerror=null; this.src='services/photo-3.jpg';" style="width: 100%; height: 100%; object-fit: cover;">
-      <img src="services/photo-4.JPG" alt="" onerror="this.onerror=null; this.src='services/photo-4.jpg';" style="width: 100%; height: 100%; object-fit: cover;">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="hero services-hero" style="min-height:60svh;">
+    <div class="services-hero-bg" id="services-hero-bg" aria-hidden="true">
+      <div class="services-mosaic" id="services-mosaic"></div>
     </div>
-    
-    <!-- Dark gradient overlay to keep white title crisp and readable -->
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle, rgba(23,20,15,0.7) 0%, rgba(23,20,15,0.92) 100%); z-index: 1;"></div>
-
-    <div class="container" id="services-hero-text" style="text-align:center; position: relative; z-index: 2;">
-      <span class="eyebrow" style="justify-content: center; margin-bottom: 1rem;">Capabilities</span>
-      <h1 class="h1" style="margin-top:0; font-size:clamp(3.5rem,8.5vw,7rem); font-weight:800; line-height: 1.1;">What we build,<br>and how.</h1>
+    <div class="container" id="services-hero-text" style="text-align:center;">
+      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(3.2rem,8vw,6.5rem); font-weight:800;">What we build,<br>and how.</h1>
     </div>
   </section>
 
@@ -88,12 +79,12 @@
     <path d="M0 23 L540 23 L595 6 L650 40 L705 23 L1240 23"/>
   </svg>
 
-  <!-- ================= SERVICE ACCORDION (IMAGES REMOVED) ================= -->
+  <!-- ================= SERVICE ACCORDION ================= -->
+  <!-- EDIT: expand/replace each service's detail copy -->
   <section style="padding-top:2rem;">
     <div class="container reveal" style="max-width:900px;">
 
-      <!-- Service 01 -->
-      <div class="accordion-item is-open" style="margin-bottom: 2rem;">
+      <div class="accordion-item is-open">
         <button class="accordion-trigger" aria-expanded="true">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">01</span>
@@ -113,8 +104,7 @@
         </div>
       </div>
 
-      <!-- Service 02 -->
-      <div class="accordion-item" style="margin-bottom: 2rem;">
+      <div class="accordion-item">
         <button class="accordion-trigger" aria-expanded="false">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">02</span>
@@ -134,8 +124,7 @@
         </div>
       </div>
 
-      <!-- Service 03 -->
-      <div class="accordion-item" style="margin-bottom: 2rem;">
+      <div class="accordion-item">
         <button class="accordion-trigger" aria-expanded="false">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">03</span>
@@ -155,8 +144,7 @@
         </div>
       </div>
 
-      <!-- Service 04 -->
-      <div class="accordion-item" style="margin-bottom: 2rem;">
+      <div class="accordion-item">
         <button class="accordion-trigger" aria-expanded="false">
           <div style="display:flex; gap:1.4rem; align-items:baseline;">
             <span class="mono-num muted">04</span>
@@ -184,6 +172,7 @@
   </svg>
 
   <!-- ================= MATERIALS ================= -->
+  <!-- EDIT: swap for your real material / finish list -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -204,6 +193,7 @@
   </svg>
 
   <!-- ================= SHOP DRAWINGS ================= -->
+  <!-- Real shop drawings from past projects (client-identifying details removed) -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -302,20 +292,6 @@
     </div>
   </div>
 </footer>
-
-<!-- ================= LIGHTBOX ================= -->
-<div class="lightbox">
-  <button class="lightbox-close" aria-label="Close">✕</button>
-  <button class="lightbox-arrow lightbox-prev" aria-label="Previous photo" type="button">←</button>
-  <button class="lightbox-arrow lightbox-next" aria-label="Next photo" type="button">→</button>
-  <div class="lightbox-inner">
-    <img class="lightbox-img" src="" alt="">
-    <div class="lightbox-caption">
-      <span data-lb-title></span>
-      <span data-lb-meta class="muted"></span>
-    </div>
-  </div>
-</div>
 
 <script src="script.js"></script>
 </body>

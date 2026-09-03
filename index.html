@@ -1,363 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kitchen Dekor Werks (KDW) — Custom Kitchens &amp; Architectural Millwork</title>
-<meta name="description" content="Kitchen Dekor Werks designs and builds bespoke kitchen cabinetry, millwork, and built-ins across Ontario. Precision craftsmanship, from concept to install.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2317140F'/%3E%3Ctext x='50' y='68' font-size='60' fill='%23F6F6F3' text-anchor='middle' font-family='sans-serif'%3EK%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Kitchen Dekor Werks",
-  "alternateName": "KDW",
-  "url": "https://kdwgroup.ca"
-}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Dekor Werks - Custom Kitchens & Architectural Millwork</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --surface-color: #141414;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --accent-color: #d4a373;
+            --border-color: #222;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: var(--text-main) !important;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            padding: 80px 50px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            line-height: 1.1;
+            margin: 0 0 25px 0;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--surface-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .carousel-slide {
+            display: none;
+            position: relative;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            padding: 15px 20px;
+            font-size: 14px;
+            background: #141414;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-caption .slide-number {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .slide-caption .location {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #111;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dot.active {
+            background: var(--accent-color);
+        }
+
+        .carousel-arrows {
+            display: flex;
+            gap: 10px;
+        }
+
+        .arrow-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.2s;
+        }
+
+        .arrow-btn:hover {
+            border-color: var(--text-muted);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .gallery-header h2 {
+            font-size: 36px;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .gallery-card {
+            background: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-card-info {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .gallery-card-info .location {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .gallery-card-info .category {
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .hero-section { grid-template-columns: 1fr; padding: 40px 20px; }
+            .hero-content h1 { font-size: 40px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            header { padding: 20px; }
+            .gallery-section { padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ================= LAUNCH INTRO ================= -->
-<div class="intro" id="site-intro" aria-hidden="true">
-  <div class="intro-mark">
-    <span class="intro-letter" style="--i:0">k</span>
-    <span class="intro-letter" style="--i:1">d</span>
-    <span class="intro-letter" style="--i:2">w</span>
-    <span class="intro-letter" style="--i:3">g</span>
-    <span class="intro-letter" style="--i:4">r</span>
-    <span class="intro-letter" style="--i:5">o</span>
-    <span class="intro-letter" style="--i:6">u</span>
-    <span class="intro-letter" style="--i:7">p</span>
-    <span class="intro-letter" style="--i:8">.</span>
-    <span class="intro-letter" style="--i:9">c</span>
-    <span class="intro-letter" style="--i:10">a</span>
-  </div>
-  <button class="intro-skip" id="intro-skip" type="button">Skip Intro</button>
-</div>
+    <header>
+        <div class="logo">kdwgroup.ca</div>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="services.html">SERVICES</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html" class="btn-outline">GET IN TOUCH</a>
+        </nav>
+    </header>
 
-<!-- ================= NAV ================= -->
-<header class="site-header">
-  <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
-  <nav class="nav-links" aria-label="Primary">
-    <a href="index.html"><span data-text="Home">Home</span></a>
-    <a href="services.html"><span data-text="Services">Services</span></a>
-    <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
-    <a href="about.html"><span data-text="About">About</span></a>
-  </nav>
-  <a href="contact.html" class="nav-cta">Get in Touch</a>
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-
-<div class="site-menu" id="site-menu" aria-hidden="true">
-  <div class="site-menu-inner">
-    <nav class="site-menu-links" aria-label="Full menu">
-      <a href="index.html"><span class="mono-num">01</span>Home</a>
-      <a href="services.html"><span class="mono-num">02</span>Services</a>
-      <a href="gallery.html"><span class="mono-num">03</span>Gallery</a>
-      <a href="about.html"><span class="mono-num">04</span>About</a>
-      <a href="contact.html"><span class="mono-num">05</span>Contact</a>
-    </nav>
-    <div class="site-menu-contact">
-      <div class="site-menu-block">
-        <span class="eyebrow">Phone</span>
-        <a href="tel:+16477727289">647-772-7289</a>
-      </div>
-      <div class="site-menu-block">
-        <span class="eyebrow">Email</span>
-        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
-      </div>
-      <div class="site-menu-block">
-        <span class="eyebrow">Shop &amp; Showroom</span>
-        <p>Ontario, Canada</p>
-      </div>
-    </div>
-  </div>
-  <div class="site-menu-footer">
-    <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-    <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
-  </div>
-</div>
-
-<main>
-
-  <!-- ================= HERO ================= -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">Custom Kitchens · Cabinetry · Architectural Millwork</span>
-        <h1 class="h1">Kitchens built<br>to fit precisely.</h1>
-        <p class="lede muted">Kitchen Dekor Werks designs and fabricates bespoke cabinetry, kitchen millwork, and built-ins — engineered with the same precision as fine furniture, installed by the people who built it.</p>
-        <div class="hero-actions">
-          <a href="gallery.html" class="btn btn-primary">View Our Work <span class="btn-arrow">→</span></a>
-          <a href="contact.html" class="btn btn-ghost">Start a Project</a>
-        </div>
-      </div>
-      
-      <div class="showcase" id="hero-showcase">
-        <div class="showcase-stage">
-          <figure class="showcase-slide is-active" data-name="Matte Black Waterfall Kitchen" data-loc="Ontario">
-            <img src="kitchen-01.jpg" alt="Matte black gloss kitchen with waterfall island">
-          </figure>
-          <figure class="showcase-slide" data-name="Bright White Island Kitchen" data-loc="Ontario">
-            <img src="kitchen-02.jpg" alt="Bright white kitchen with large island and pendant lighting">
-          </figure>
-          <figure class="showcase-slide" data-name="Gloss Grey &amp; Brass Kitchen" data-loc="Ontario">
-            <img src="kitchen-03.jpg" alt="Glossy grey cabinetry kitchen with brass hardware">
-          </figure>
-          <figure class="showcase-slide" data-name="Espresso &amp; Marble Kitchen" data-loc="Ontario">
-            <img src="kitchen-04.jpg" alt="Dark espresso cabinetry kitchen with marble waterfall hood">
-          </figure>
-          <figure class="showcase-slide" data-name="Walnut Wet Bar" data-loc="Ontario">
-            <img src="builtin-wetbar-01.jpg" alt="Custom walnut wet bar with glass cabinetry">
-          </figure>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Kitchen Dekor Werks<br>built to fit precisely.</h1>
+            <p>From custom cabinetry to architectural millwork, Kitchen Dekor Werks delivers bespoke craftsmanship engineered for exact fit and installed seamlessly from concept to completion.</p>
+            <div class="hero-buttons">
+                <a href="gallery.html" class="btn-primary">VIEW OUR WORK →</a>
+                <a href="contact.html" class="btn-secondary">START A PROJECT</a>
+            </div>
         </div>
 
-        <div class="showcase-caption">
-          <span class="showcase-index mono-num">01</span>
-          <div class="showcase-text">
-            <span class="showcase-name">Matte Black Waterfall Kitchen</span>
-            <span class="showcase-loc muted small">Ontario</span>
-          </div>
+        <!-- Active Slider (Kitchens First, then Random Millwork) -->
+        <div class="carousel-container">
+            
+            <!-- Slide 1: Kitchen -->
+            <div class="carousel-slide active">
+                <img src="Active slider/White Shaker Brass Pull Kitchen.jpg" alt="White Shaker Brass Pull Kitchen">
+                <div class="slide-caption">
+                    <div><span class="slide-number">01</span> White Shaker Brass Pull Kitchen</div>
+                    <div class="location">Ontario</div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Kitchen -->
+            <div class="carousel-slide">
+                <img src="Active slider/Navy Shaker Brass Bar Kitchen.jpg" alt="Navy Shaker Brass Bar Kitchen">
+                <div class="slide-caption">
+                    <div><span class="slide-number">02</span> Navy Shaker Brass Bar Kitchen</div>
+                    <div class="location">Ontario</div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Kitchen -->
+            <div class="carousel-slide">
+                <img src="Active slider/Panda Marble Waterfall Island Kitchen.jpg" alt="Panda Marble Waterfall Island Kitchen">
+                <div class="slide-caption">
+                    <div><span class="slide-number">03</span> Panda Marble Waterfall Island Kitchen</div>
+                    <div class="location">Milton, Ontario</div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Kitchen -->
+            <div class="carousel-slide">
+                <img src="Active slider/Black High Gloss Gold Handle.jpg" alt="Black High Gloss Gold Handle">
+                <div class="slide-caption">
+                    <div><span class="slide-number">04</span> Black High Gloss Gold Handle Kitchen</div>
+                    <div class="location">Markham, Ontario</div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Entertainment Unit -->
+            <div class="carousel-slide">
+                <img src="Active slider/Beige Fluted TV Floating Entertainment Unit.jpg" alt="Beige Fluted TV Floating Entertainment Unit">
+                <div class="slide-caption">
+                    <div><span class="slide-number">05</span> Beige Fluted TV Floating Entertainment Unit</div>
+                    <div class="location">Ontario</div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Closet -->
+            <div class="carousel-slide">
+                <img src="Active slider/Dark Walnut Fluted Closet.jpg" alt="Dark Walnut Fluted Closet">
+                <div class="slide-caption">
+                    <div><span class="slide-number">06</span> Dark Walnut Fluted Closet</div>
+                    <div class="location">Ontario</div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Vanity -->
+            <div class="carousel-slide">
+                <img src="Active slider/Oak Floating Wall Hung Vanity Brass.jpg" alt="Oak Floating Wall Hung Vanity Brass">
+                <div class="slide-caption">
+                    <div><span class="slide-number">07</span> Oak Floating Wall Hung Vanity Brass</div>
+                    <div class="location">Ontario</div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="carousel-controls">
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                </div>
+                <div class="carousel-arrows">
+                    <button class="arrow-btn" onclick="plusSlides(-1)">&#8592;</button>
+                    <button class="arrow-btn" onclick="plusSlides(1)">&#8594;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section (Burlington Removed) -->
+    <section class="gallery-section">
+        <div class="gallery-header">
+            <h2>A few kitchens we've built.</h2>
+            <a href="gallery.html" class="btn-secondary">FULL GALLERY →</a>
         </div>
 
-        <div class="showcase-controls">
-          <button class="showcase-arrow showcase-prev" aria-label="Previous project" type="button">←</button>
-          <div class="showcase-dashes">
-            <button class="dash is-active" data-slide="0" aria-label="Show project 1" type="button"></button>
-            <button class="dash" data-slide="1" aria-label="Show project 2" type="button"></button>
-            <button class="dash" data-slide="2" aria-label="Show project 3" type="button"></button>
-            <button class="dash" data-slide="3" aria-label="Show project 4" type="button"></button>
-            <button class="dash" data-slide="4" aria-label="Show project 5" type="button"></button>
-          </div>
-          <button class="showcase-arrow showcase-next" aria-label="Next project" type="button">→</button>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="Active slider/Black High Gloss Gold Handle.jpg" alt="Markham Kitchen">
+                <div class="gallery-card-info">
+                    <span class="location">Markham, Ontario</span>
+                    <span class="category">Kitchens (18 Photos)</span>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="Active slider/Panda Marble Waterfall Island Kitchen.jpg" alt="Milton Kitchen">
+                <div class="gallery-card-info">
+                    <span class="location">Milton, Ontario</span>
+                    <span class="category">Kitchens (3 Photos)</span>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="Active slider/Navy Shaker Brass Bar Kitchen.jpg" alt="Oakville Kitchen">
+                <div class="gallery-card-info">
+                    <span class="location">Oakville, Ontario</span>
+                    <span class="category">Kitchens</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= MARQUEE ================= -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Custom Cabinetry</span><span>Kitchen Millwork</span><span>Built-Ins</span><span>Fine Joinery</span>
-      <span>Custom Cabinetry</span><span>Kitchen Millwork</span><span>Built-Ins</span><span>Fine Joinery</span>
-    </div>
-  </div>
+    <script>
+        let slideIndex = 0;
+        showSlides(slideIndex);
 
-  <!-- ================= STATEMENT ================= -->
-  <section>
-    <div class="container statement reveal">
-      <p class="eyebrow">Our Approach</p>
-      <p class="h2">Every kitchen starts with how a family actually lives in it — then we draw, cut, and finish around that, down to the last reveal line and hinge.</p>
-    </div>
-  </section>
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-  <!-- ================= SERVICES PREVIEW ================= -->
-  <section>
-    <div class="container">
-      <div class="reveal" style="margin-bottom:3rem;">
-        <span class="eyebrow">What We Build</span>
-        <h2 style="margin-top:1rem;">Four ways we work with wood.</h2>
-      </div>
-      <div class="grid-4 stagger">
-        <div class="card reveal">
-          <span class="mono-num">01</span>
-          <h3>Custom Cabinetry</h3>
-          <p>Full kitchen design and fabrication, tailored to your space and how you cook.</p>
-        </div>
-        <div class="card reveal">
-          <span class="mono-num">02</span>
-          <h3>Architectural Millwork</h3>
-          <p>Mouldings, wainscoting, and trim, cut and finished on site to a tight tolerance.</p>
-        </div>
-        <div class="card reveal">
-          <span class="mono-num">03</span>
-          <h3>Built-Ins &amp; Shelving</h3>
-          <p>Window seats, media walls, pantries, and closets built into the room itself.</p>
-        </div>
-        <div class="card reveal">
-          <span class="mono-num">04</span>
-          <h3>Renovation &amp; Install</h3>
-          <p>Full-service kitchen renovation, from first sketch to final walkthrough.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-  <!-- ================= WORK PREVIEW ================= -->
-  <section>
-    <div class="container">
-      <div class="reveal" style="margin-bottom:3rem; display:flex; justify-content:space-between; align-items:end; gap:1rem; flex-wrap:wrap;">
-        <div>
-          <span class="eyebrow">Recent Work</span>
-          <h2 style="margin-top:1rem;">A few kitchens we've built.</h2>
-        </div>
-        <a href="gallery.html" class="btn btn-ghost">Full Gallery <span class="btn-arrow">→</span></a>
-      </div>
-      
-      <div class="grid-3 stagger">
-        <!-- Burlington Ontario (Supports multiple photos: photo-1 through photo-X with fallback) -->
-        <figure class="gallery-item reveal" data-category="kitchens" data-images="Burlington Ontario/photo-1.JPG,Burlington Ontario/photo-1.jpg,Burlington Ontario/photo-2.JPG,Burlington Ontario/photo-2.jpg,Burlington Ontario/photo-3.JPG,Burlington Ontario/photo-3.jpg,Burlington Ontario/photo-4.JPG,Burlington Ontario/photo-4.jpg">
-          <img src="Burlington Ontario/photo-1.JPG" alt="Kitchen project in Burlington, Ontario" onerror="this.onerror=null; this.src='Burlington Ontario/photo-1.jpg';">
-          <figcaption><span>Burlington, Ontario</span><span class="muted">Kitchens</span></figcaption>
-        </figure>
-
-        <!-- Markham, Ontario (All photos) -->
-        <figure class="gallery-item reveal" data-category="kitchens" data-images="Markham, Ontario/photo-1.JPG,Markham, Ontario/photo-2.JPG,Markham, Ontario/photo-3.JPG,Markham, Ontario/photo-4.JPG,Markham, Ontario/photo-5.JPG,Markham, Ontario/photo-6.JPG,Markham, Ontario/photo-7.JPG,Markham, Ontario/photo-8.JPG,Markham, Ontario/photo-9.JPG,Markham, Ontario/photo-10.JPG">
-          <img src="Markham, Ontario/photo-1.JPG" alt="Kitchen project in Markham, Ontario" onerror="this.onerror=null; this.src='Markham, Ontario/photo-1.jpg';">
-          <figcaption><span>Markham, Ontario</span><span class="muted">Kitchens (10 Photos)</span></figcaption>
-        </figure>
-
-        <!-- Milton, Ontario (All photos) -->
-        <figure class="gallery-item reveal" data-category="kitchens" data-images="Milton, Ontario/photo-1.JPG,Milton, Ontario/photo-2.JPG,Milton, Ontario/photo-3.JPG">
-          <img src="Milton, Ontario/photo-1.JPG" alt="Kitchen project in Milton, Ontario" onerror="this.onerror=null; this.src='Milton, Ontario/photo-1.jpg';">
-          <figcaption><span>Milton, Ontario</span><span class="muted">Kitchens (3 Photos)</span></figcaption>
-        </figure>
-
-        <!-- Oakville, Ontario (Supports multiple photos: photo-1 through photo-X with fallback) -->
-        <figure class="gallery-item reveal" data-category="kitchens" data-images="Oakville, Ontario/photo-1.JPG,Oakville, Ontario/photo-1.jpg,Oakville, Ontario/photo-2.JPG,Oakville, Ontario/photo-2.jpg,Oakville, Ontario/photo-3.JPG,Oakville, Ontario/photo-3.jpg,Oakville, Ontario/photo-4.JPG,Oakville, Ontario/photo-4.jpg">
-          <img src="Oakville, Ontario/photo-1.JPG" alt="Kitchen project in Oakville, Ontario" onerror="this.onerror=null; this.src='Oakville, Ontario/photo-1.jpg';">
-          <figcaption><span>Oakville, Ontario</span><span class="muted">Kitchens</span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PROJECT VIDEOS (All 6 Videos) ================= -->
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="reveal" style="margin-bottom:3rem;">
-        <span class="eyebrow">In Motion</span>
-        <h2 style="margin-top:1rem;">Project videos.</h2>
-      </div>
-      <div class="grid-3 stagger">
-        <figure class="reveal video-card">
-          <video src="Video - 1.MP4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card">
-          <video src="Video - 2.MP4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card">
-          <video src="Video - 3.MP4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card">
-          <video src="Video - 4.MP4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card">
-          <video src="Video - 5.MP4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-        <figure class="reveal video-card">
-          <video src="Video - 6.MP4" muted loop autoplay playsinline controls></video>
-          <figcaption></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PROCESS ================= -->
-  <section>
-    <div class="container">
-      <div class="reveal" style="margin-bottom:1rem;">
-        <span class="eyebrow">How It Works</span>
-        <h2 style="margin-top:1rem;">From first call to final install.</h2>
-      </div>
-      <div class="process-list reveal">
-        <div class="process-row">
-          <span class="mono-num">01</span>
-          <h3>Consultation</h3>
-          <p class="muted">We visit your space, talk through how you live in it, and scope the project together.</p>
-        </div>
-        <div class="process-row">
-          <span class="mono-num">02</span>
-          <h3>Design &amp; Drawings</h3>
-          <p class="muted">Detailed shop drawings and material selections, refined until every dimension is right.</p>
-        </div>
-        <div class="process-row">
-          <span class="mono-num">03</span>
-          <h3>Fabrication</h3>
-          <p class="muted">Built in our shop to exact tolerances, with the joinery and finish your project calls for.</p>
-        </div>
-        <div class="process-row">
-          <span class="mono-num">04</span>
-          <h3>Installation</h3>
-          <p class="muted">Our own installers fit and finish on site — the team that built it is the team that hangs it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CTA ================= -->
-  <section class="cta-band">
-    <div class="container reveal">
-      <span class="eyebrow" style="justify-content:center;">Start a Project</span>
-      <h2 style="margin:1.2rem auto 0;">Have a kitchen in mind? Let's talk it through.</h2>
-      <div style="margin-top:2rem;">
-        <a href="contact.html" class="btn btn-primary">Get in Touch <span class="btn-arrow">→</span></a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <h4>Kitchen Dekor Werks</h4>
-        <p class="small" style="opacity:.7;">Custom Kitchens, Cabinetry &amp; Architectural Millwork.</p>
-      </div>
-      <div>
-        <h4>Site</h4>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="tel:+16477727289">647-772-7289</a>
-        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
-        <p>kdwgroup.ca</p>
-      </div>
-      <div>
-        <h4>Follow</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Houzz</a>
-        <a href="#">Pinterest</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-      <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ================= LIGHTBOX ================= -->
-<div class="lightbox">
-  <button class="lightbox-close" aria-label="Close">✕</button>
-  <button class="lightbox-arrow lightbox-prev" aria-label="Previous photo" type="button">←</button>
-  <button class="lightbox-arrow lightbox-next" aria-label="Next photo" type="button">→</button>
-  <div class="lightbox-inner">
-    <img class="lightbox-img" src="" alt="">
-    <div class="lightbox-caption">
-      <span data-lb-title></span>
-      <span data-lb-meta class="muted"></span>
-    </div>
-  </div>
-</div>
-
-<script src="script.js"></script>
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n >= slides.length) { slideIndex = 0 }
+            if (n < 0) { slideIndex = slides.length - 1 }
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex].classList.add("active");
+            dots[slideIndex].classList.add("active");
+        }
+    </script>
 </body>
 </html>

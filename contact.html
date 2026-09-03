@@ -11,147 +11,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Seamless container for the Fillout form */
-  .integrated-form-wrap {
-    background: transparent;
-    border: none;
-    padding: 0;
-    width: 100%;
+  /* Native custom form built directly in HTML/CSS matching your exact layout */
+  .native-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 2.5rem;
   }
-</style>
-</head>
-<body>
-
-<header class="site-header">
-  <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
-  <nav class="nav-links" aria-label="Primary">
-    <a href="index.html"><span data-text="Home">Home</span></a>
-    <a href="services.html"><span data-text="Services">Services</span></a>
-    <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
-    <a href="about.html"><span data-text="About">About</span></a>
-  </nav>
-  <a href="contact.html" class="nav-cta">Get in Touch</a>
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-
-<div class="site-menu" id="site-menu" aria-hidden="true">
-  <div class="site-menu-inner">
-    <nav class="site-menu-links" aria-label="Full menu">
-      <a href="index.html"><span class="mono-num">01</span>Home</a>
-      <a href="services.html"><span class="mono-num">02</span>Services</a>
-      <a href="gallery.html"><span class="mono-num">03</span>Gallery</a>
-      <a href="about.html"><span class="mono-num">04</span>About</a>
-      <a href="contact.html"><span class="mono-num">05</span>Contact</a>
-    </nav>
-    <div class="site-menu-contact">
-      <div class="site-menu-block">
-        <span class="eyebrow">Phone</span>
-        <a href="tel:+16477727289">647-772-7289</a>
-      </div>
-      <div class="site-menu-block">
-        <span class="eyebrow">Email</span>
-        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
-      </div>
-      <div class="site-menu-block">
-        <span class="eyebrow">Service Area</span>
-        <p>Greater Toronto Area &amp; Ontario</p>
-      </div>
-      <div class="site-menu-block">
-        <span class="eyebrow">Follow</span>
-        <div class="site-menu-social">
-          <a href="#">Instagram</a>
-          <a href="#">Houzz</a>
-          <a href="#">Pinterest</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="site-menu-footer">
-    <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-    <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
-  </div>
-</div>
-
-<main>
-
-  <section class="hero" style="min-height:40svh;">
-    <div class="container">
-      <span class="eyebrow">Reach Us</span>
-      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(2.4rem,5.6vw,4.6rem);">Let's talk<br>about your project.</h1>
-      <p class="lede muted" style="margin-top:1.4rem;">Submit your specifications and details below for a prompt project consultation.</p>
-    </div>
-  </section>
-
-  <section style="padding-top:1rem; padding-bottom:4rem;">
-    <div class="container contact-grid reveal" style="align-items: start;">
-
-      <div>
-        <dl class="contact-info">
-          <dt>Phone</dt>
-          <dd><a href="tel:+16477727289">647-772-7289</a></dd>
-
-          <dt>Email</dt>
-          <dd><a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a></dd>
-
-          <dt>Service Area</dt>
-          <dd>Greater Toronto Area &amp; Ontario</dd>
-
-          <dt>Hours</dt>
-          <dd>Mon–Fri, 8:00am–5:00pm<br>Saturday by appointment</dd>
-
-          <dt>Follow</dt>
-          <dd><a href="#">Instagram</a> · <a href="#">Houzz</a> · <a href="#">Pinterest</a></dd>
-        </dl>
-      </div>
-
-      <div class="integrated-form-wrap">
-        <div style="width:100%;height:500px;" data-fillout-id="pSw8VXQMJLus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
-      </div>
-
-    </div>
-  </section>
-
-  <svg class="joinery reveal" viewBox="0 0 1240 46" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 23 L540 23 L595 6 L650 40 L705 23 L1240 23"/>
-  </svg>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <h4>Kitchen Dekor Werks</h4>
-        <p class="small" style="opacity:.7;">Custom Kitchens, Cabinetry &amp; Architectural Millwork.</p>
-      </div>
-      <div>
-        <h4>Site</h4>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="tel:+16477727289">647-772-7289</a>
-        <a href="mailto:info@kdwgroup.ca">info@kdwgroup.ca</a>
-        <p>kdwgroup.ca</p>
-      </div>
-      <div>
-        <h4>Follow</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Houzz</a>
-        <a href="#">Pinterest</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-      <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+  @media(max-width: 768px) {
+    .native-form { padding: 1.25rem; }
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-group label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #F6F6F3;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: #F6F6F3;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(246, 246, 243, 0.3);
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .form-group select {
+    color: #F6F6F3;
+    background-color: #12100e;
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+  .file-dropzone {
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.01);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+  .file-dropzone:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .file-dropzone input[type="file"] {
+    display: none;
+  }
+  .file-dropzone-text {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(246, 246, 243, 0.7);
+  }
+  .form-submit-btn {
+    display: inline

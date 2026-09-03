@@ -10,6 +10,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=7">
+<style>
+  /* Balanced sizing for the hero headline */
+  .hero-copy .h1 {
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .hero-copy .h1 span.brand-name {
+    display: block;
+    margin-bottom: 0.15em;
+  }
+  .hero-copy .h1 span.brand-tagline {
+    display: block;
+  }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,7 +102,10 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1 class="h1">Kitchen Dekor Werks<br>built to fit precisely.</h1>
+        <h1 class="h1">
+          <span class="brand-name">Kitchen Dekor Werks</span>
+          <span class="brand-tagline">built to fit precisely.</span>
+        </h1>
         <p class="lede muted">From custom cabinetry to architectural millwork, Kitchen Dekor Werks delivers bespoke craftsmanship engineered for exact fit and installed seamlessly from concept to completion.</p>
         <div class="hero-actions">
           <a href="gallery.html" class="btn btn-primary">View Our Work <span class="btn-arrow">→</span></a>
@@ -105,8 +124,8 @@
           <figure class="showcase-slide" data-name="Panda Marble Waterfall Island Kitchen" data-loc="Milton, Ontario">
             <img src="Active slider/Panda Marble Waterfall Island Kitchen.jpg" alt="Panda Marble Waterfall Island Kitchen">
           </figure>
-          <figure class="showcase-slide" data-name="Black High Gloss Gold Handle Kitchen" data-loc="Markham, Ontario">
-            <img src="Active slider/Black High Gloss Gold Handle.jpg" alt="Black High Gloss Gold Handle Kitchen">
+          <figure class="showcase-slide" data-name="Black High Gloss Gold Handle" data-loc="Markham, Ontario">
+            <img src="Active slider/Black High Gloss Gold Handle.jpg" alt="Black High Gloss Gold Handle">
           </figure>
           <figure class="showcase-slide" data-name="Beige Fluted TV Floating Entertainment Unit" data-loc="Ontario">
             <img src="Active slider/Beige Fluted TV Floating Entertainment Unit.jpg" alt="Beige Fluted TV Floating Entertainment Unit">

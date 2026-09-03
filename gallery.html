@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   <nav class="nav-links" aria-label="Primary">
     <a href="index.html"><span data-text="Home">Home</span></a>
     <a href="services.html"><span data-text="Services">Services</span></a>
-    <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
+    <a href="gallery.html" class="is-active"><span data-text="Gallery">Gallery</span></a>
     <a href="about.html"><span data-text="About">About</span></a>
   </nav>
   <a href="contact.html" class="nav-cta">Get in Touch</a>
@@ -47,14 +47,6 @@
         <span class="eyebrow">Shop &amp; Showroom</span>
         <p>Ontario, Canada</p>
       </div>
-      <div class="site-menu-block">
-        <span class="eyebrow">Follow</span>
-        <div class="site-menu-social">
-          <a href="#">Instagram</a>
-          <a href="#">Houzz</a>
-          <a href="#">Pinterest</a>
-        </div>
-      </div>
     </div>
   </div>
   <div class="site-menu-footer">
@@ -68,135 +60,80 @@
   <section class="hero" style="min-height:50svh;">
     <div class="container">
       <h1 class="h1" style="font-size:clamp(2.4rem,5.6vw,4.6rem);">Recent work.</h1>
-      <p class="lede muted" style="margin-top:1.4rem;">Filter by category, or click any piece for a closer look. Swap these placeholders for real project photography.</p>
+      <p class="lede muted" style="margin-top:1.4rem;">Filter by category, or click any piece for a closer look.</p>
     </div>
   </section>
 
   <!-- ================= GALLERY GRID ================= -->
-  <!-- EDIT: replace each .ph placeholder with a real <img>, update data-title / data-category -->
   <section style="padding-top:1rem;">
     <div class="container">
 
       <div class="filter-bar reveal">
         <button class="filter-btn is-active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="kitchens">Kitchens</button>
-        <button class="filter-btn" data-filter="cabinetry">Cabinetry</button>
-        <button class="filter-btn" data-filter="built-ins">Built-Ins</button>
-        <button class="filter-btn" data-filter="details">Details</button>
         <button class="filter-btn" data-filter="millwork">Millwork</button>
       </div>
 
       <div class="gallery-grid stagger">
 
-        <figure class="gallery-item reveal" data-category="kitchens" data-title="Waterfall Island Kitchen" data-project="waterfall-island-kitchen">
-          <img src="images/waterfall-island-kitchen/photo-1.jpg" alt="White kitchen with waterfall marble island">
-          <figcaption><span>Waterfall Island Kitchen</span><span class="muted">Kitchens</span></figcaption>
+        <!-- Burlington Ontario -->
+        <figure class="gallery-item reveal" data-category="kitchens" data-images="Burlington Ontario/photo-1.JPG,Burlington Ontario/photo-1.jpg,Burlington Ontario/photo-2.JPG,Burlington Ontario/photo-2.jpg,Burlington Ontario/photo-3.JPG,Burlington Ontario/photo-3.jpg,Burlington Ontario/photo-4.JPG,Burlington Ontario/photo-4.jpg">
+          <img src="Burlington Ontario/photo-1.JPG" alt="Kitchen project in Burlington, Ontario" onerror="this.onerror=null; this.src='Burlington Ontario/photo-1.jpg';">
+          <figcaption><span>Burlington, Ontario</span><span class="muted">Kitchens</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="cabinetry" data-title="Waterfall Marble Island" data-project="waterfall-marble-island">
-          <img src="images/waterfall-marble-island/photo-1.jpg" alt="Close view of waterfall marble kitchen island">
-          <figcaption><span>Waterfall Marble Island</span><span class="muted">Cabinetry</span></figcaption>
+        <!-- Markham, Ontario -->
+        <figure class="gallery-item reveal" data-category="kitchens" data-images="Markham, Ontario/photo-1.JPG,Markham, Ontario/photo-2.JPG,Markham, Ontario/photo-3.JPG,Markham, Ontario/photo-4.JPG,Markham, Ontario/photo-5.JPG,Markham, Ontario/photo-6.JPG,Markham, Ontario/photo-7.JPG,Markham, Ontario/photo-8.JPG,Markham, Ontario/photo-9.JPG,Markham, Ontario/photo-10.JPG">
+          <img src="Markham, Ontario/photo-1.JPG" alt="Kitchen project in Markham, Ontario" onerror="this.onerror=null; this.src='Markham, Ontario/photo-1.jpg';">
+          <figcaption><span>Markham, Ontario</span><span class="muted">Kitchens (10 Photos)</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="built-ins" data-title="Walnut Media Wall" data-project="walnut-media-wall">
-          <img src="images/walnut-media-wall/photo-1.jpg" alt="Walnut wood slat media wall with floating shelves">
-          <figcaption><span>Walnut Media Wall</span><span class="muted">Built-Ins</span></figcaption>
+        <!-- Milton, Ontario -->
+        <figure class="gallery-item reveal" data-category="kitchens" data-images="Milton, Ontario/photo-1.JPG,Milton, Ontario/photo-2.JPG,Milton, Ontario/photo-3.JPG">
+          <img src="Milton, Ontario/photo-1.JPG" alt="Kitchen project in Milton, Ontario" onerror="this.onerror=null; this.src='Milton, Ontario/photo-1.jpg';">
+          <figcaption><span>Milton, Ontario</span><span class="muted">Kitchens (3 Photos)</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="details" data-title="Walnut Wet Bar" data-project="walnut-wet-bar">
-          <img src="images/walnut-wet-bar/photo-1.jpg" alt="Custom walnut wet bar with glass display cabinetry">
-          <figcaption><span>Walnut Wet Bar</span><span class="muted">Details</span></figcaption>
+        <!-- Oakville, Ontario -->
+        <figure class="gallery-item reveal" data-category="kitchens" data-images="Oakville, Ontario/photo-1.JPG,Oakville, Ontario/photo-1.jpg,Oakville, Ontario/photo-2.JPG,Oakville, Ontario/photo-2.jpg,Oakville, Ontario/photo-3.JPG,Oakville, Ontario/photo-3.jpg,Oakville, Ontario/photo-4.JPG,Oakville, Ontario/photo-4.jpg">
+          <img src="Oakville, Ontario/photo-1.JPG" alt="Kitchen project in Oakville, Ontario" onerror="this.onerror=null; this.src='Oakville, Ontario/photo-1.jpg';">
+          <figcaption><span>Oakville, Ontario</span><span class="muted">Kitchens</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="kitchens" data-title="Family Kitchen &amp; Dining" data-project="family-kitchen-dining">
-          <img src="images/family-kitchen-dining/photo-1.jpg" alt="Open concept white and black kitchen with dining nook">
-          <figcaption><span>Family Kitchen &amp; Dining</span><span class="muted">Kitchens</span></figcaption>
+        <!-- Millwork / Built-ins categories if stored directly or organized -->
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Built ins/photo-1.jpg">
+          <img src="millwork/Built ins/photo-1.jpg" alt="Custom built-ins millwork" onerror="this.style.display='none'">
+          <figcaption><span>Built-Ins</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="cabinetry" data-title="Espresso Island Detail" data-project="espresso-island-detail">
-          <img src="images/espresso-island-detail/photo-1.jpg" alt="Espresso tone cabinetry island with brass hardware">
-          <figcaption><span>Espresso Island Detail</span><span class="muted">Cabinetry</span></figcaption>
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Closet/photo-1.jpg">
+          <img src="millwork/Closet/photo-1.jpg" alt="Custom closet millwork" onerror="this.style.display='none'">
+          <figcaption><span>Closet</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="built-ins" data-title="Custom Pantry Shelving" data-project="custom-pantry-shelving">
-          <img src="images/custom-pantry-shelving/photo-1.jpg" alt="Custom pantry and closet shelving">
-          <figcaption><span>Custom Pantry Shelving</span><span class="muted">Built-Ins</span></figcaption>
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Enteratinment unit/photo-1.jpg">
+          <img src="millwork/Enteratinment unit/photo-1.jpg" alt="Custom entertainment unit millwork" onerror="this.style.display='none'">
+          <figcaption><span>Entertainment Unit</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="details" data-title="Gloss Grey &amp; Brass Detail" data-project="gloss-grey-brass-kitchen">
-          <img src="images/gloss-grey-brass-kitchen/photo-1.jpg" alt="Detail of glossy grey cabinetry with brass hardware">
-          <figcaption><span>Gloss Grey &amp; Brass Detail</span><span class="muted">Details</span></figcaption>
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Laundry room/photo-1.jpg">
+          <img src="millwork/Laundry room/photo-1.jpg" alt="Custom laundry room millwork" onerror="this.style.display='none'">
+          <figcaption><span>Laundry Room</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="kitchens" data-title="Two-Tone Gloss Kitchen" data-project="two-tone-gloss-kitchen">
-          <img src="images/two-tone-gloss-kitchen/photo-1.jpg" alt="Two-tone gloss kitchen with waterfall island">
-          <figcaption><span>Two-Tone Gloss Kitchen</span><span class="muted">Kitchens</span></figcaption>
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Mud room/photo-1.jpg">
+          <img src="millwork/Mud room/photo-1.jpg" alt="Custom mud room millwork" onerror="this.style.display='none'">
+          <figcaption><span>Mud Room</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
-        <!-- EDIT: rename each folder + update its src below to match once you know what to call it — the caption updates itself automatically -->
-        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Burlington Ontario/photo-1.jpg" alt="Kitchen project in Burlington, Ontario">
-          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Office funiture/photo-1.jpg">
+          <img src="millwork/Office funiture/photo-1.jpg" alt="Custom office furniture millwork" onerror="this.style.display='none'">
+          <figcaption><span>Office Furniture</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
-        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Markham, Ontario/photo-1.jpg" alt="Kitchen project in Markham, Ontario">
-          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Milton, Ontario/photo-1.jpg" alt="Kitchen project in Milton, Ontario">
-          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/Oakville, Ontario/photo-1.jpg" alt="Kitchen project in Oakville, Ontario">
-          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="kitchens" data-autoname>
-          <img src="images/kitchens/More kitchen projects/photo-1.jpg" alt="Additional kitchen project">
-          <figcaption><span></span><span class="muted">Kitchens</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Built ins/photo-1.jpg" alt="Custom built-ins millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Closet/photo-1.jpg" alt="Custom closet millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Enteratinment unit/photo-1.jpg" alt="Custom entertainment unit millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Installation/photo-1.jpg" alt="Installation of custom millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Laundry room/photo-1.jpg" alt="Custom laundry room millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Mud room/photo-1.jpg" alt="Custom mud room millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Office funiture/photo-1.jpg" alt="Custom office furniture millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
-        </figure>
-
-        <figure class="gallery-item reveal" data-category="millwork" data-autoname>
-          <img src="images/millwork/Vanity/photo-1.jpg" alt="Custom vanity millwork">
-          <figcaption><span></span><span class="muted">Millwork</span></figcaption>
+        <figure class="gallery-item reveal" data-category="millwork" data-images="millwork/Vanity/photo-1.jpg">
+          <img src="millwork/Vanity/photo-1.jpg" alt="Custom vanity millwork" onerror="this.style.display='none'">
+          <figcaption><span>Vanity</span><span class="muted">Millwork</span></figcaption>
         </figure>
 
       </div>
@@ -204,7 +141,6 @@
   </section>
 
   <!-- ================= PROJECT VIDEOS ================= -->
-  <!-- EDIT: swap each src for your real project video. Captions are automatic — rename the video's folder (e.g. videos/video-1 -> videos/markham-walkthrough) and update the src below to match, and the caption updates itself. -->
   <section style="padding-top:0;">
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -212,28 +148,28 @@
         <h2 style="margin-top:1rem;">Project videos.</h2>
       </div>
       <div class="grid-3 stagger">
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 1/clip.mp4" muted loop autoplay playsinline controls></video>
+        <figure class="reveal video-card">
+          <video src="Video - 1.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 2/clip.mp4" muted loop autoplay playsinline controls></video>
+        <figure class="reveal video-card">
+          <video src="Video - 2.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 3/clip.mp4" muted loop autoplay playsinline controls></video>
+        <figure class="reveal video-card">
+          <video src="Video - 3.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 4/clip.mp4" muted loop autoplay playsinline controls></video>
+        <figure class="reveal video-card">
+          <video src="Video - 4.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 5/clip.mp4" muted loop autoplay playsinline controls></video>
+        <figure class="reveal video-card">
+          <video src="Video - 5.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
-        <figure class="reveal video-card" data-autoname>
-          <video src="videos/Video - 6/clip.mp4" muted loop autoplay playsinline controls></video>
+        <figure class="reveal video-card">
+          <video src="Video - 6.MP4" muted loop autoplay playsinline controls></video>
           <figcaption></figcaption>
         </figure>
       </div>

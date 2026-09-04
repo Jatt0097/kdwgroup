@@ -10,6 +10,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Ensure the services hero fits entirely on a single screen view */
+  .services-hero {
+    min-height: 80svh !important;
+    height: 80svh !important;
+    max-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+  }
+</style>
 </head>
 <body>
 
@@ -59,19 +71,18 @@
   </div>
   <div class="site-menu-footer">
     <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-    <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
+    <span class="small">&copy; <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
   </div>
 </div>
 
 <main>
 
-  <!-- ================= PAGE HERO ================= -->
-  <section class="hero services-hero" style="min-height:100svh;">
+  <section class="hero services-hero">
     <div class="services-hero-bg" id="services-hero-bg" aria-hidden="true">
       <div class="services-mosaic" id="services-mosaic"></div>
     </div>
     <div class="container" id="services-hero-text" style="text-align:center;">
-      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(3.2rem,8vw,6.5rem); font-weight:800;">What we build.</h1>
+      <h1 class="h1" style="margin-top:0; font-size:clamp(2.6rem,6.5vw,5rem); font-weight:800;">What we build.</h1>
     </div>
   </section>
 
@@ -79,8 +90,6 @@
     <path d="M0 23 L540 23 L595 6 L650 40 L705 23 L1240 23"/>
   </svg>
 
-  <!-- ================= SERVICE ACCORDION ================= -->
-  <!-- EDIT: expand/replace each service's detail copy -->
   <section style="padding-top:2rem;">
     <div class="container reveal" style="max-width:900px;">
 
@@ -171,8 +180,6 @@
     <path d="M0 23 L540 23 L595 6 L650 40 L705 23 L1240 23"/>
   </svg>
 
-  <!-- ================= MATERIALS ================= -->
-  <!-- EDIT: swap for your real material / finish list -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -192,8 +199,6 @@
     <path d="M0 23 L540 23 L595 6 L650 40 L705 23 L1240 23"/>
   </svg>
 
-  <!-- ================= SHOP DRAWINGS ================= -->
-  <!-- Real shop drawings from past projects (client-identifying details removed) -->
   <section>
     <div class="container">
       <div class="reveal" style="margin-bottom:3rem;">
@@ -288,7 +293,7 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-      <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
+      <span class="small">&copy; <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
     </div>
   </div>
 </footer>

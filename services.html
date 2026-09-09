@@ -17,7 +17,7 @@
   <a href="index.html" class="wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></a>
   <nav class="nav-links" aria-label="Primary">
     <a href="index.html"><span data-text="Home">Home</span></a>
-    <a href="services.html"><span data-text="Services">Services</span></a>
+    <a href="services.html" class="is-active"><span data-text="Services">Services</span></a>
     <a href="gallery.html"><span data-text="Gallery">Gallery</span></a>
     <a href="about.html"><span data-text="About">About</span></a>
   </nav>
@@ -59,19 +59,30 @@
   </div>
   <div class="site-menu-footer">
     <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-    <span class="small">&copy; <span data-year>2026</span> Kitchen Dekor Werks — A KDW Group Company</span>
+    <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
   </div>
 </div>
 
 <main>
 
-  <!-- ================= PAGE HERO ================= -->
-  <section class="hero services-hero" style="min-height:100svh;">
-    <div class="services-hero-bg" id="services-hero-bg" aria-hidden="true">
-      <div class="services-mosaic" id="services-mosaic"></div>
+  <!-- ================= PAGE HERO WITH MOSAIC BACKGROUND ================= -->
+  <section class="hero services-hero" style="min-height:70svh; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+    
+    <!-- Mosaic Background Grid using random service folder photos -->
+    <div class="services-hero-bg" id="services-hero-bg" aria-hidden="true" style="position:absolute; inset:0; z-index:0; display:grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; opacity: 0.35; filter: blur(2px) brightness(0.85); transform: scale(1.05);">
+      <img src="services/kitchen-island.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='services/photo-1.jpg'">
+      <img src="services/millwork-detail.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='services/photo-2.jpg'">
+      <img src="services/custom-pantry.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='services/photo-3.jpg'">
+      <img src="services/walnut-vanity.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='services/photo-4.jpg'">
+      <img src="services/cabinet-doors.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='services/photo-1.jpg'">
+      <img src="services/crown-moulding.jpg" alt="" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='services/photo-2.jpg'">
     </div>
-    <div class="container" id="services-hero-text" style="text-align:center;">
-      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(3.2rem,8vw,6.5rem); font-weight:800;">What we build.</h1>
+
+    <!-- Dark gradient overlay to preserve clean text legibility -->
+    <div style="position:absolute; inset:0; background: radial-gradient(circle, rgba(23,20,15,0.7) 0%, rgba(23,20,15,0.92) 100%); z-index:1;"></div>
+
+    <div class="container" id="services-hero-text" style="text-align:center; position:relative; z-index:2;">
+      <h1 class="h1" style="margin-top:1.2rem; font-size:clamp(3.2rem,8vw,6.5rem); font-weight:800;">What we build,<br>and how.</h1>
     </div>
   </section>
 
@@ -80,6 +91,7 @@
   </svg>
 
   <!-- ================= SERVICE ACCORDION ================= -->
+  <!-- EDIT: expand/replace each service's detail copy -->
   <section style="padding-top:2rem;">
     <div class="container reveal" style="max-width:900px;">
 
@@ -182,14 +194,6 @@
         <div class="card reveal"><h3>White Oak</h3><p>A warm, versatile grain that suits most modern kitchens.</p></div>
         <div class="card reveal"><h3>Maple</h3><p>Fine, even grain — ideal for painted cabinetry.</p></div>
         <div class="card reveal"><h3>Painted MDF</h3><p>Smooth, durable finishes in any colour you specify.</p></div>
-        <div class="card reveal"><h3>Wood Veneer</h3><p>Genuine premium wood slices bonded to an engineered core for stability and flawless grain matching.</p></div>
-        <div class="card reveal"><h3>Super-Matte PET</h3><p>An ultra-durable, soft-touch polymer wrap that delivers a modern painted aesthetic with total smudge resistance.</p></div>
-        <div class="card reveal"><h3>High-Gloss Acrylic</h3><p>A glass-smooth, highly reflective surface designed to maximize ambient light in ultra-modern kitchen spaces.</p></div>
-        <div class="card reveal"><h3>Textured Melamine (TSS)</h3><p>Advanced thermo-structured surfaces that physically mimic the exact touch and feel of concrete, stone, or raw timber.</p></div>
-        <div class="card reveal"><h3>Marine Plywood</h3><p>Multi-layered hardwood bound with waterproof adhesive for ultimate structural resilience and humidity defense.</p></div>
-        <div class="card reveal"><h3>Premium MDF Core</h3><p>A perfectly stable, engineered fiber substrate that completely eliminates wood expansion, contraction, and warping.</p></div>
-        <div class="card reveal"><h3>Fluted Tambour</h3><p>Bold, repeating vertical wood curves designed to create dimensional focal points on islands and range hoods.</p></div>
-        <div class="card reveal"><h3>Anodized Aluminum &amp; Glass</h3><p>Sleek, lightweight metal framing engineered to support reeded, tinted, or smoked glass upper display panels.</p></div>
       </div>
     </div>
   </section>
@@ -209,22 +213,22 @@
       <div class="showcase reveal" id="drawings-showcase">
         <div class="showcase-stage">
           <figure class="showcase-slide is-active" data-name="Kitchen Layout Plan">
-            <a href="kitchen-layout-plan/photo-1.jpg" target="_blank" rel="noopener"><img src="kitchen-layout-plan/photo-1.jpg" alt="Kitchen layout plan drawing"></a>
+            <a href="images/kitchen-layout-plan/photo-1.jpg" target="_blank" rel="noopener"><img src="images/kitchen-layout-plan/photo-1.jpg" alt="Kitchen layout plan drawing"></a>
           </figure>
           <figure class="showcase-slide" data-name="Island Cabinetry Elevation">
-            <a href="island-cabinetry-elevation/photo-1.jpg" target="_blank" rel="noopener"><img src="island-cabinetry-elevation/photo-1.jpg" alt="Island cabinetry elevation drawing"></a>
+            <a href="images/island-cabinetry-elevation/photo-1.jpg" target="_blank" rel="noopener"><img src="images/island-cabinetry-elevation/photo-1.jpg" alt="Island cabinetry elevation drawing"></a>
           </figure>
           <figure class="showcase-slide" data-name="Perimeter Wall Elevation">
-            <a href="perimeter-wall-elevation/photo-1.jpg" target="_blank" rel="noopener"><img src="perimeter-wall-elevation/photo-1.jpg" alt="Perimeter wall elevation drawing"></a>
+            <a href="images/perimeter-wall-elevation/photo-1.jpg" target="_blank" rel="noopener"><img src="images/perimeter-wall-elevation/photo-1.jpg" alt="Perimeter wall elevation drawing"></a>
           </figure>
           <figure class="showcase-slide" data-name="Integrated Fridge Panel Detail">
-            <a href="integrated-fridge-panel-detail/photo-1.jpg" target="_blank" rel="noopener"><img src="integrated-fridge-panel-detail/photo-1.jpg" alt="Integrated fridge panel detail drawing"></a>
+            <a href="images/integrated-fridge-panel-detail/photo-1.jpg" target="_blank" rel="noopener"><img src="images/integrated-fridge-panel-detail/photo-1.jpg" alt="Integrated fridge panel detail drawing"></a>
           </figure>
           <figure class="showcase-slide" data-name="Island Elevation — Alternate Layout">
-            <a href="island-elevation-alt-layout/photo-1.jpg" target="_blank" rel="noopener"><img src="island-elevation-alt-layout/photo-1.jpg" alt="Island elevation, alternate layout drawing"></a>
+            <a href="images/island-elevation-alt-layout/photo-1.jpg" target="_blank" rel="noopener"><img src="images/island-elevation-alt-layout/photo-1.jpg" alt="Island elevation, alternate layout drawing"></a>
           </figure>
           <figure class="showcase-slide" data-name="Full Wall Elevation — Appliance Run">
-            <a href="full-wall-elevation-appliance-run/photo-1.jpg" target="_blank" rel="noopener"><img src="full-wall-elevation-appliance-run/photo-1.jpg" alt="Full wall elevation with appliance run drawing"></a>
+            <a href="images/full-wall-elevation-appliance-run/photo-1.jpg" target="_blank" rel="noopener"><img src="images/full-wall-elevation-appliance-run/photo-1.jpg" alt="Full wall elevation with appliance run drawing"></a>
           </figure>
         </div>
 
@@ -236,7 +240,7 @@
         </div>
 
         <div class="showcase-controls">
-          <button class="showcase-arrow showcase-prev" aria-label="Previous drawing" type="button">&larr;</button>
+          <button class="showcase-arrow showcase-prev" aria-label="Previous drawing" type="button">←</button>
           <div class="showcase-dashes">
             <button class="dash is-active" data-slide="0" aria-label="Show drawing 1" type="button"></button>
             <button class="dash" data-slide="1" aria-label="Show drawing 2" type="button"></button>
@@ -245,7 +249,7 @@
             <button class="dash" data-slide="4" aria-label="Show drawing 5" type="button"></button>
             <button class="dash" data-slide="5" aria-label="Show drawing 6" type="button"></button>
           </div>
-          <button class="showcase-arrow showcase-next" aria-label="Next drawing" type="button">&rarr;</button>
+          <button class="showcase-arrow showcase-next" aria-label="Next drawing" type="button">→</button>
         </div>
       </div>
     </div>
@@ -256,7 +260,7 @@
       <span class="eyebrow" style="justify-content:center;">Ready When You Are</span>
       <h2 style="margin:1.2rem auto 0;">Tell us about your kitchen.</h2>
       <div style="margin-top:2rem;">
-        <a href="contact.html" class="btn btn-primary">Get in Touch <span class="btn-arrow">&rarr;</span></a>
+        <a href="contact.html" class="btn btn-primary">Get in Touch <span class="btn-arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -293,7 +297,7 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-wordmark"><span class="kdw">kdw</span><span class="rest">group.ca</span></span>
-      <span class="small">&copy; <span data-year>2026</span> Kitchen Dekor Werks — A KDW Group Company</span>
+      <span class="small">© <span data-year></span> Kitchen Dekor Werks — A KDW Group Company</span>
     </div>
   </div>
 </footer>

@@ -392,7 +392,7 @@ h3, .h3{
 }
 .hero-copy{ position: relative; }
 .hero-copy .eyebrow{ margin-bottom: 1.4rem; }
-.hero-copy h1.h1{ font-size: clamp(3.12rem, 7.68vw, 6.72rem); }
+.hero-copy h1.h1{ font-size: clamp(1.82rem, 4.48vw, 3.92rem); }
 .hero-copy .lede{ margin: 1.4rem 0 2rem; font-size: clamp(1.32rem, 2.4vw, 1.68rem); }
 .hero-actions{ display: flex; gap: 1rem; flex-wrap: wrap; }
 

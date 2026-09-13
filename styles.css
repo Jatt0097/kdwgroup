@@ -549,7 +549,7 @@ h3, .h3{
 /* process */
 .process-list{ display: flex; flex-direction: column; }
 .process-row{
-  display: grid; grid-template-columns: 5rem 1fr 1fr; gap: 1.5rem; align-items: baseline;
+  display: grid; grid-template-columns: minmax(160px, 220px) 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: baseline;
   padding: 1.8rem 0; border-top: 1px solid var(--line);
 }
 .process-row:last-child{ border-bottom: 1px solid var(--line); }

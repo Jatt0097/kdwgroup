@@ -70,7 +70,7 @@ h1, .h1{
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: .98;
-  font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
 }
 h2, .h2{
   font-family: var(--f-display);
@@ -86,8 +86,8 @@ h3, .h3{
   line-height: 1.2;
 }
 .lede{
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  line-height: 1.5;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  line-height: 1.45;
   color: var(--ink);
   max-width: 42ch;
 }
@@ -101,9 +101,9 @@ h3, .h3{
   display: inline-flex;
   align-items: center;
   gap: .6em;
-  padding: 1em 1.6em;
+  padding: .8em 1.4em;
   font-family: var(--f-mono);
-  font-size: .78rem;
+  font-size: .75rem;
   letter-spacing: .1em;
   text-transform: uppercase;
   border-radius: 999px;
@@ -370,13 +370,14 @@ h3, .h3{
 .lightbox-inner{ max-width: 900px; width: 100%; color: var(--ink); }
 .lightbox-img{ width: 100%; max-height: min(70vh, 560px); object-fit: cover; display: block; }
 .lightbox-caption{ display: flex; justify-content: space-between; margin-top: 1rem; font-family: var(--f-mono); font-size: .8rem; }
-.lightbox-close{ position: absolute; top: 2rem; right: var(--gutter); color: var(--ink); background: none; border: 1px solid var(--ink); border-radius: 999px; width: 2.6rem; height: 2.6rem; }
+.lightbox-close{ position: absolute; top: 2rem; right: var(--gutter); color: var(--ink); background: none; border: 1px solid var(--ink); border-radius: 999px; width: 2.6rem; height: 2.6rem; display: flex; align-items: center; justify-content: center; line-height: 1; }
 .lightbox-arrow{
   position: fixed;
   top: 50%; transform: translateY(-50%);
   background: none; border: 1px solid var(--line); color: var(--ink);
   width: 2.6rem; height: 2.6rem; border-radius: 999px; flex-shrink: 0;
   z-index: 310;
+  display: flex; align-items: center; justify-content: center; line-height: 1;
   transition: border-color .3s var(--ease), color .3s var(--ease);
 }
 .lightbox-arrow:hover{ border-color: var(--amber); color: var(--amber); }
@@ -402,7 +403,7 @@ h3, .h3{
 @media (max-width: 560px){ .footer-top{ grid-template-columns: 1fr; } }
 
 /* =========================================================
-   HOME PAGE SPECIFIC STYLES (Scoped under .home-page)
+   HOME PAGE SPECIFIC STYLES
    ========================================================= */
 
 .home-page .hero {
@@ -418,7 +419,7 @@ h3, .h3{
   display: grid;
   grid-template-columns: 1.05fr .95fr;
   gap: clamp(1.5rem, 4vw, 3.5rem);
-  align-items: start;
+  align-items: flex-end;
   width: 100%;
 }
 
@@ -428,22 +429,22 @@ h3, .h3{
 }
 
 .home-page .hero-copy .eyebrow {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
 
 .home-page .hero-copy h1.h1 {
-  font-size: clamp(2.1rem, 4.3vw, 3.8rem);
-  line-height: 1.02;
-  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 3.4vw, 2.85rem) !important;
+  line-height: 1.02 !important;
+  margin-bottom: 0.85rem !important;
 }
 
 .home-page .hero-copy .lede {
   margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  margin-bottom: 1.25rem;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
   line-height: 1.45;
   max-width: 44ch;
 }
@@ -452,7 +453,6 @@ h3, .h3{
   display: flex;
   gap: 0.85rem;
   flex-wrap: wrap;
-  margin-top: auto;
 }
 
 .home-page .showcase-stage {
@@ -460,6 +460,7 @@ h3, .h3{
   height: clamp(340px, 42vw, 480px);
   overflow: hidden;
   border: 1px solid var(--line);
+  background: var(--paper-dim);
 }
 
 .home-page .showcase-slide {
@@ -467,14 +468,17 @@ h3, .h3{
   inset: 0;
   margin: 0;
   opacity: 0;
+  visibility: hidden;
   transform: translateX(3%);
-  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  transition: opacity .9s var(--ease), transform .9s var(--ease), visibility 0s linear .9s;
   pointer-events: none;
 }
 
 .home-page .showcase-slide.is-active {
   opacity: 1;
+  visibility: visible;
   transform: translateX(0);
+  transition: opacity .9s var(--ease), transform .9s var(--ease), visibility 0s linear 0s;
   pointer-events: auto;
   z-index: 2;
 }
@@ -508,6 +512,11 @@ h3, .h3{
   height: 2.3rem;
   border-radius: 999px;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
   transition: border-color .3s var(--ease), color .3s var(--ease);
 }
 
@@ -519,6 +528,7 @@ h3, .h3{
 .home-page .showcase-dashes {
   display: flex;
   gap: .5rem;
+  align-items: center;
 }
 
 .home-page .dash {
@@ -527,6 +537,7 @@ h3, .h3{
   background: var(--line);
   border: none;
   padding: 0;
+  cursor: pointer;
   transition: background .3s var(--ease), width .3s var(--ease);
 }
 
@@ -595,6 +606,7 @@ h3, .h3{
 @media (max-width: 860px) {
   .home-page .hero-grid {
     grid-template-columns: 1fr;
+    align-items: start;
   }
   .home-page .showcase {
     margin-top: 2rem;

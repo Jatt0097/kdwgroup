@@ -171,7 +171,8 @@
     });
   }
 
-  /* ---- lightbox (supports multiple photos per project via manifest.json) ---- */
+  /* ---- lightbox (supports multiple photos per project via manifest.json,
+     and now also the full hero showcase set for forward/back browsing) ---- */
   var lightbox = document.querySelector('.lightbox');
   if (lightbox) {
     var lbImage = lightbox.querySelector('.lightbox-img');
@@ -184,6 +185,14 @@
     var lbIndex = 0;
     var lbCategory = '';
     var lbTitleText = '';
+
+    // when the currently-open set is the hero showcase set, each photo has
+    // its own title/location (unlike gallery projects, which share one
+    // title/location across all their photos) — these arrays hold that
+    // per-photo info, indexed the same as lbPhotos when lbIsShowcase is true
+    var lbIsShowcase = false;
+    var showcaseNames = [];
+    var showcaseLocs = [];
 
     // project folder slug -> sorted list of "slug/file.jpg" paths, built
     // from manifest.json once it loads (falls back to each item's single
@@ -224,6 +233,7 @@
           ? projectPhotos[slug]
           : [fallbackImg ? fallbackImg.src : ''];
         lbIndex = 0;
+        lbIsShowcase = false;
         lbCategory = item.getAttribute('data-category') || '';
         lbTitleText = item.getAttribute('data-title') || '';
         renderLbPhoto();
@@ -232,28 +242,45 @@
       });
     });
 
-    // Hero showcase slides — clicking one opens the same lightbox so the
-    // visitor can see the full, uncropped photo (the slider itself crops
-    // images to fill the frame).
-    document.querySelectorAll('.showcase-slide').forEach(function (slide) {
-      var slideImg = slide.querySelector('img');
-      if (!slideImg) return;
-      slide.style.cursor = 'zoom-in';
-      slide.addEventListener('click', function () {
-        lbPhotos = [slideImg.src];
-        lbIndex = 0;
-        lbCategory = slide.getAttribute('data-loc') || '';
-        lbTitleText = slide.getAttribute('data-name') || '';
-        renderLbPhoto();
-        lightbox.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
+    // Hero showcase slides — clicking one opens the same lightbox, loaded
+    // with ALL the showcase photos (not just the one clicked) so the
+    // visitor can arrow forward/back through the whole set. The slider
+    // itself crops images to fill the frame; the lightbox always shows
+    // the full, uncropped photo.
+    var showcaseSlideEls = document.querySelectorAll('.showcase-slide');
+    var showcasePhotos = [];
+    if (showcaseSlideEls.length) {
+      showcaseSlideEls.forEach(function (slide) {
+        var slideImg = slide.querySelector('img');
+        if (!slideImg) return;
+        showcasePhotos.push(slideImg.src);
+        showcaseNames.push(slide.getAttribute('data-name') || '');
+        showcaseLocs.push(slide.getAttribute('data-loc') || '');
+        slide.style.cursor = 'zoom-in';
       });
-    });
+
+      showcaseSlideEls.forEach(function (slide, i) {
+        slide.addEventListener('click', function () {
+          lbPhotos = showcasePhotos;
+          lbIndex = i;
+          lbIsShowcase = true;
+          lbCategory = showcaseLocs[i];
+          lbTitleText = showcaseNames[i];
+          renderLbPhoto();
+          lightbox.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    }
 
     if (lbPrev) {
       lbPrev.addEventListener('click', function (e) {
         e.stopPropagation();
         lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+        if (lbIsShowcase) {
+          lbTitleText = showcaseNames[lbIndex];
+          lbCategory = showcaseLocs[lbIndex];
+        }
         renderLbPhoto();
       });
     }
@@ -261,6 +288,10 @@
       lbNext.addEventListener('click', function (e) {
         e.stopPropagation();
         lbIndex = (lbIndex + 1) % lbPhotos.length;
+        if (lbIsShowcase) {
+          lbTitleText = showcaseNames[lbIndex];
+          lbCategory = showcaseLocs[lbIndex];
+        }
         renderLbPhoto();
       });
     }

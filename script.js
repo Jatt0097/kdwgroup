@@ -232,6 +232,24 @@
       });
     });
 
+    // Hero showcase slides — clicking one opens the same lightbox so the
+    // visitor can see the full, uncropped photo (the slider itself crops
+    // images to fill the frame).
+    document.querySelectorAll('.showcase-slide').forEach(function (slide) {
+      var slideImg = slide.querySelector('img');
+      if (!slideImg) return;
+      slide.style.cursor = 'zoom-in';
+      slide.addEventListener('click', function () {
+        lbPhotos = [slideImg.src];
+        lbIndex = 0;
+        lbCategory = slide.getAttribute('data-loc') || '';
+        lbTitleText = slide.getAttribute('data-name') || '';
+        renderLbPhoto();
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
     if (lbPrev) {
       lbPrev.addEventListener('click', function (e) {
         e.stopPropagation();

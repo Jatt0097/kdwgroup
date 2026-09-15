@@ -596,7 +596,7 @@ h3, .h3{
 .lightbox.is-open{ opacity: 1; pointer-events: auto; }
 .lightbox-inner{ max-width: 900px; width: 100%; color: var(--ink); }
 .lightbox .ph{ height: min(70vh, 560px); }
-.lightbox-img{ width: 100%; max-height: min(70vh, 560px); object-fit: cover; display: block; }
+.lightbox-img{ max-width: 100%; max-height: min(70vh, 560px); width: auto; height: auto; object-fit: contain; display: block; margin: 0 auto; }
 .lightbox-caption{ display: flex; justify-content: space-between; margin-top: 1rem; font-family: var(--f-mono); font-size: .8rem; }
 .lightbox-close{ position: absolute; top: 2rem; right: var(--gutter); color: var(--ink); background: none; border: 1px solid var(--ink); border-radius: 999px; width: 2.6rem; height: 2.6rem; }
 .lightbox-arrow{

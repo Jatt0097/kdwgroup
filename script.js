@@ -215,6 +215,11 @@
     function renderLbPhoto() {
       lbImage.src = lbPhotos[lbIndex];
       lbImage.alt = lbTitleText;
+      lbImage.style.objectFit = 'contain';
+      lbImage.style.maxWidth = '100%';
+      lbImage.style.maxHeight = '100%';
+      lbImage.style.width = 'auto';
+      lbImage.style.height = 'auto';
       lbTitle.textContent = lbTitleText;
       var multi = lbPhotos.length > 1;
       lbMeta.textContent = multi
